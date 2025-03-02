@@ -8,20 +8,31 @@
         margin: 0;
       }
       body {
-        background-image: url(https://wallpaperaccess.com/full/1620563.jpg);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
-        background-attachment: fixed;
+        background: url(https://wallpaperaccess.com/full/2151936.jpg) no-repeat center center fixed;
+        background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
       .content {
-        position: relative;
-        padding: 20px;
+        display: flex;
         min-height: 100vh;
-        text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
         background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+      }
+      .intro {
+        flex: 1;
+        padding-right: 20px;
+      }
+      .picture {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .picture img {
+        max-width: 100%;
+        height: auto;
+        max-height: 300px;
       }
       a {
         color: #ADD8E6;
@@ -30,13 +41,16 @@
   </head>
   <body>
     <div class="content">
-      <h1>#3 Princess Leia</h1>
-      <div>
-        <strong>Short Introduction:</strong>
+      <div class="intro">
+        <h1>#3 Princess Leia</h1>
         <p>Leia Skywalker Organa Solo was a Force-sensitive human Alderaanian female politician, Jedi, and military leader who served in the Alliance to Restore the Republic during the Imperial Era and the New Republic and Resistance in the subsequent New Republic Era.</p>
-        Additional info source: <a href="https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo">https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo</a>
+        <p>Additional info source: <a href=https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo target="_blank">https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo</a></p>
+        <p>Background Image Source: <a href=https://wallpaperaccess.com/full/2151936.jpg target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
       </div>
-      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/1620563.jpg" target="_blank">https://wallpaperaccess.com/full/1620563.jpg</a></em></p>
+      <div class="picture">
+        <img src=https://wallpaperaccess.com/full/1620563.jpg alt=#3 Princess Leia>
+        <p>Character Picture Source: <a href=https://wallpaperaccess.com/full/1620563.jpg target="_blank">https://wallpaperaccess.com/full/1620563.jpg</a></p>
+      </div>
     </div>
   </body>
 </html>
