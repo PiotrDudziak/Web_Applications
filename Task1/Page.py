@@ -37,6 +37,7 @@ bg_image_url = (
     if image_results and len(image_results) > 0
     else "assets/default_star_wars_bg.jpg"
 )
+bg_image_source = image_results[0].get("image") if image_results and len(image_results) > 0 else ""
 
 # Retrieve Wikipedia information for main content
 wiki_intro, wiki_source = get_wikipedia_info("Star Wars")
@@ -88,6 +89,7 @@ main_md_content = f"""
       <p>{books_info}</p>
       <p><em>Source: <a href="{books_source}" target="_blank">{books_source}</a></em></p>
       <h3>List of some of the characters from franchise: <a href="star_wars_list">Visit the Star Wars Characters Catalog</a></h3>
+      <p><em>Background Image Source: <a href="{bg_image_source}" target="_blank">{bg_image_source}</a></em></p>
     </div>
   </body>
 </html>

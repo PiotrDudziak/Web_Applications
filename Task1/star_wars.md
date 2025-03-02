@@ -41,6 +41,7 @@
 Star Wars is an American epic space-opera media franchise, centered on a film series created by George Lucas that includes Star Wars (1977), The Empire Strikes Back (1980), and Return of the Jedi (1983). The series depicts the adventures of various characters "a long time ago in a galaxy far, far away". Many derivative Star Wars works have been produced in conjunction with, between, and after the original trilogy of films, and later installments. This body of work was collectively known as the Star Wars Expanded Universe for decades.</p>
       <p><em>Source: <a href="https://en.wikipedia.org/wiki/List_of_Star_Wars_books" target="_blank">https://en.wikipedia.org/wiki/List_of_Star_Wars_books</a></em></p>
       <h3>List of some of the characters from franchise: <a href="star_wars_list">Visit the Star Wars Characters Catalog</a></h3>
+      <p><em>Background Image Source: <a href="https://images3.alphacoders.com/114/thumb-1920-11439.png" target="_blank">https://images3.alphacoders.com/114/thumb-1920-11439.png</a></em></p>
     </div>
   </body>
 </html>
