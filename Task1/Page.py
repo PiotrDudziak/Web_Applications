@@ -225,6 +225,7 @@ print("Character list Markdown file (star_wars_list.md) generated.")
 # ------------------------------
 # Part 3: Details Subpages (individual character details in the characters directory)
 # ------------------------------
+
 with DDGS() as ddgs:
     bg_theme_results = ddgs.images("wallpaperaccess star wars galaxy", max_results=1)
 bg_theme = (
@@ -248,7 +249,7 @@ for char in characters:
         margin: 0;
       }}
       body {{
-        background: url({bg_theme}) no-repeat center center fixed;
+        background: url('{bg_theme}') no-repeat center center fixed;
         background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
@@ -284,12 +285,12 @@ for char in characters:
       <div class="intro">
         <h1>{char['name']}</h1>
         <p>{char["info"]}</p>
-        <p>Additional info source: <a href={char["info_src"]} target="_blank">{char["info_src"]}</a></p>
-        <p>Background Image Source: <a href={bg_theme_source} target="_blank">{bg_theme_source}</a></p>
+        <p>Additional info source: <a href="{char["info_src"]}" target="_blank">{char["info_src"]}</a></p>
+        <p>Background Image Source: <a href="{bg_theme_source}" target="_blank">{bg_theme_source}</a></p>
       </div>
       <div class="picture">
-        <img src={char_img} alt={char['name']}>
-        <p>Character Picture Source: <a href={char["img_src"]} target="_blank">{char["img_src"]}</a></p>
+        <img src="{char_img}" alt="{char['name']}">
+        <p>Character Picture Source: <a href="{char["img_src"]}" target="_blank">{char["img_src"]}</a></p>
       </div>
     </div>
   </body>
