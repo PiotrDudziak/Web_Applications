@@ -11,7 +11,7 @@
         background-image: url(https://wallpaperaccess.com/full/4646966.jpg);
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: cover;
+        background-size: contain;
         background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
@@ -33,8 +33,8 @@
       <h1>#14 Count Dooku (Darth Tyranus)</h1>
       <div>
         <strong>Short Introduction:</strong>
-        <p>Dooku was a Force-sensitive human male Serennian who served as a Jedi Master during the waning years of the Galactic Republic and later Count of House Serenno. He became dissatisfied with the Jedi Order and fell to the dark side of the Force, becoming the Dark Lord of the Sith Darth Tyranus.</p>
-        Additional info source: <a href="https://starwars.fandom.com/wiki/Dooku">https://starwars.fandom.com/wiki/Dooku</a>
+        <p>Count Dooku, also known as Darth Tyranus, is a major antagonist in the Star Wars franchise.</p>
+        Additional info source: <a href="https://disney.fandom.com/wiki/Count_Dooku">https://disney.fandom.com/wiki/Count_Dooku</a>
       </div>
       <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/4646966.jpg" target="_blank">https://wallpaperaccess.com/full/4646966.jpg</a></em></p>
     </div>

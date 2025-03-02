@@ -11,7 +11,7 @@
         background-image: url(https://wallpaperaccess.com/full/1620563.jpg);
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: cover;
+        background-size: contain;
         background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;

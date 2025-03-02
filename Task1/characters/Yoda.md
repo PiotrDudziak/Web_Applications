@@ -8,10 +8,10 @@
         margin: 0;
       }
       body {
-        background-image: url(https://wallpaperaccess.com/full/1946420.jpg);
+        background-image: url(https://wallpaperaccess.com/full/560146.jpg);
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: cover;
+        background-size: contain;
         background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
@@ -36,7 +36,7 @@
         <p>Yoda was a legendary Jedi Grand Master who led the Jedi Order through the time of the High Republic, in the years leading up to its destruction by the Sith, and during the transformation of the Galactic Republic into the Galactic Empire.</p>
         Additional info source: <a href="https://starwars.fandom.com/wiki/Yoda">https://starwars.fandom.com/wiki/Yoda</a>
       </div>
-      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/1946420.jpg" target="_blank">https://wallpaperaccess.com/full/1946420.jpg</a></em></p>
+      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/560146.jpg" target="_blank">https://wallpaperaccess.com/full/560146.jpg</a></em></p>
     </div>
   </body>
 </html>
