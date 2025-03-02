@@ -4,7 +4,6 @@ import requests
 from bs4 import BeautifulSoup
 from duckduckgo_search import DDGS
 
-# Set up output directories
 OUTPUT_DIR = "WWW1"
 CHARACTERS_DIR = os.path.join(OUTPUT_DIR, "characters")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -13,6 +12,7 @@ os.makedirs(CHARACTERS_DIR, exist_ok=True)
 # ------------------------------
 # Part 1: Main Website (star_wars.md file creation)
 # ------------------------------
+
 def get_wikipedia_info(query):
     search_url = "https://en.wikipedia.org/w/api.php"
     params = {"action": "query", "list": "search", "srsearch": query, "format": "json"}
@@ -29,7 +29,6 @@ def get_wikipedia_info(query):
             return info, link
     return "No information found.", ""
 
-# Retrieve background picture URL using DuckDuckGo
 with DDGS() as ddgs:
     image_results = ddgs.images("star wars picture", max_results=1)
 bg_image_url = (
@@ -39,13 +38,11 @@ bg_image_url = (
 )
 bg_image_source = image_results[0].get("image") if image_results and len(image_results) > 0 else ""
 
-# Retrieve Wikipedia information for main content
 wiki_intro, wiki_source = get_wikipedia_info("Star Wars")
 movies_info, movie_source = get_wikipedia_info("Star Wars movies")
 games_info, games_source = get_wikipedia_info("Star Wars games")
 books_info, books_source = get_wikipedia_info("Star Wars books")
 
-# Build main Markdown file wrapped in HTML for background styling
 main_md_content = f"""
 <html>
   <head>
@@ -102,6 +99,21 @@ print("Main website Markdown file (star_wars.md) generated.")
 # ------------------------------
 # Part 2: Character List File (star_wars_list.md creation)
 # ------------------------------
+
+with DDGS() as ddgs:
+    bg_list_results = ddgs.images("star wars characters", max_results=1)
+bg_list_url = (
+    bg_list_results[0].get("image", "")
+    if bg_list_results and len(bg_list_results) > 0
+    else "assets/default_star_wars_bg.jpg"
+)
+bg_list_source = (
+    bg_list_results[0].get("image")
+    if bg_list_results and len(bg_list_results) > 0
+    else ""
+)
+
+
 url = "https://kenjosabers.com/blogs/news/top-15-most-popular-star-wars-characters-icons-from-a-galaxy-far-far-away"
 response = requests.get(url)
 response.raise_for_status()
@@ -152,20 +164,68 @@ for element in elements:
         "img_src": image_source
     })
 
-# Create character list file (star_wars_list.md) in OUTPUT_DIR.
-# Links point to individual detail pages in the characters directory.
-character_list_md = "## Star Wars Characters\n\n"
+character_list_md = f"""
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Star Wars Characters Catalog</title>
+    <style>
+      html, body {{
+        height: 100%;
+        margin: 0;
+      }}
+      body {{
+        background: url({bg_list_url}) no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        color: #FFFFFF;
+      }}
+      .content {{
+        position: relative;
+        padding: 20px;
+        min-height: 100vh;
+        text-shadow: 8px 8px 16px rgba(0, 0, 0, 1);
+        background-color: rgba(0, 0, 0, 0.7);
+      }}
+      a {{
+        color: #ADD8E6;
+      }}
+      ul {{
+        list-style: none;
+        padding: 0;
+      }}
+      li {{
+        margin-bottom: 10px;
+      }}
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Star Wars Characters Catalog</h1>
+      <ul>
+"""
+
 for char in characters:
     safe_name = re.sub(r"[^a-zA-Z0-9_\-]", "_", re.sub(r"^\#\d+\s*", "", char["name"])) + ".md"
-    character_list_md += f"- [{char['name']}](characters/{safe_name})\n"
+    character_list_md += f'        <li><a href="characters/{safe_name}">{char["name"]}</a></li>\n'
+
+character_list_md += f"""
+      </ul>
+      <p><em>Background Image Source: <a href="{bg_list_source}" target="_blank">{bg_list_source}</a></em></p>
+    </div>
+  </body>
+</html>
+""".strip()
 
 with open(os.path.join(OUTPUT_DIR, "star_wars_list.md"), "w", encoding="utf-8") as f:
     f.write(character_list_md)
 print("Character list Markdown file (star_wars_list.md) generated.")
 
+
 # ------------------------------
 # Part 3: Details Subpages (individual character details in the characters directory)
 # ------------------------------
+
 for char in characters:
     file_name = re.sub(r"[^a-zA-Z0-9_\-]", "_", re.sub(r"^\#\d+\s*", "", char["name"])) + ".md"
     detail_md_content = f"# {char['name']}\n\n"
