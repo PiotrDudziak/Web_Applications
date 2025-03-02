@@ -8,7 +8,7 @@
         margin: 0;
       }
       body {
-        background: url(https://wallpaperaccess.com/full/2151936.jpg) no-repeat center center fixed;
+        background: url('https://wallpaperaccess.com/full/2151936.jpg') no-repeat center center fixed;
         background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
@@ -44,12 +44,12 @@
       <div class="intro">
         <h1>#6 Obi-Wan Kenobi</h1>
         <p>Obi-Wan Kenobi was a legendary Force-sensitive human male Jedi Master who served on the Jedi High Council during the final years of the Republic Era.</p>
-        <p>Additional info source: <a href=https://starwars.fandom.com/wiki/Obi-Wan_Kenobi target="_blank">https://starwars.fandom.com/wiki/Obi-Wan_Kenobi</a></p>
-        <p>Background Image Source: <a href=https://wallpaperaccess.com/full/2151936.jpg target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
+        <p>Additional info source: <a href="https://starwars.fandom.com/wiki/Obi-Wan_Kenobi" target="_blank">https://starwars.fandom.com/wiki/Obi-Wan_Kenobi</a></p>
+        <p>Background Image Source: <a href="https://wallpaperaccess.com/full/2151936.jpg" target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
       </div>
       <div class="picture">
-        <img src=https://wallpaperaccess.com/full/1183671.jpg alt=#6 Obi-Wan Kenobi>
-        <p>Character Picture Source: <a href=https://wallpaperaccess.com/full/1183671.jpg target="_blank">https://wallpaperaccess.com/full/1183671.jpg</a></p>
+        <img src="https://wallpaperaccess.com/full/1183671.jpg" alt="#6 Obi-Wan Kenobi">
+        <p>Character Picture Source: <a href="https://wallpaperaccess.com/full/1183671.jpg" target="_blank">https://wallpaperaccess.com/full/1183671.jpg</a></p>
       </div>
     </div>
   </body>

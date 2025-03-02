@@ -8,7 +8,7 @@
         margin: 0;
       }
       body {
-        background: url(https://wallpaperaccess.com/full/2151936.jpg) no-repeat center center fixed;
+        background: url('https://wallpaperaccess.com/full/2151936.jpg') no-repeat center center fixed;
         background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
@@ -44,12 +44,12 @@
       <div class="intro">
         <h1>#3 Princess Leia</h1>
         <p>Leia Skywalker Organa Solo was a Force-sensitive human Alderaanian female politician, Jedi, and military leader who served in the Alliance to Restore the Republic during the Imperial Era and the New Republic and Resistance in the subsequent New Republic Era.</p>
-        <p>Additional info source: <a href=https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo target="_blank">https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo</a></p>
-        <p>Background Image Source: <a href=https://wallpaperaccess.com/full/2151936.jpg target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
+        <p>Additional info source: <a href="https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo" target="_blank">https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo</a></p>
+        <p>Background Image Source: <a href="https://wallpaperaccess.com/full/2151936.jpg" target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
       </div>
       <div class="picture">
-        <img src=https://wallpaperaccess.com/full/1620563.jpg alt=#3 Princess Leia>
-        <p>Character Picture Source: <a href=https://wallpaperaccess.com/full/1620563.jpg target="_blank">https://wallpaperaccess.com/full/1620563.jpg</a></p>
+        <img src="https://wallpaperaccess.com/full/1620563.jpg" alt="#3 Princess Leia">
+        <p>Character Picture Source: <a href="https://wallpaperaccess.com/full/1620563.jpg" target="_blank">https://wallpaperaccess.com/full/1620563.jpg</a></p>
       </div>
     </div>
   </body>

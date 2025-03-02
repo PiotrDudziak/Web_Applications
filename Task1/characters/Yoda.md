@@ -8,7 +8,7 @@
         margin: 0;
       }
       body {
-        background: url(https://wallpaperaccess.com/full/2151936.jpg) no-repeat center center fixed;
+        background: url('https://wallpaperaccess.com/full/2151936.jpg') no-repeat center center fixed;
         background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
@@ -44,12 +44,12 @@
       <div class="intro">
         <h1>#4 Yoda</h1>
         <p>Yoda was a legendary Jedi Grand Master who led the Jedi Order through the time of the High Republic, in the years leading up to its destruction by the Sith, and during the transformation of the Galactic Republic into the Galactic Empire.</p>
-        <p>Additional info source: <a href=https://starwars.fandom.com/wiki/Yoda target="_blank">https://starwars.fandom.com/wiki/Yoda</a></p>
-        <p>Background Image Source: <a href=https://wallpaperaccess.com/full/2151936.jpg target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
+        <p>Additional info source: <a href="https://starwars.fandom.com/wiki/Yoda" target="_blank">https://starwars.fandom.com/wiki/Yoda</a></p>
+        <p>Background Image Source: <a href="https://wallpaperaccess.com/full/2151936.jpg" target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
       </div>
       <div class="picture">
-        <img src=https://wallpaperaccess.com/full/1378983.jpg alt=#4 Yoda>
-        <p>Character Picture Source: <a href=https://wallpaperaccess.com/full/1378983.jpg target="_blank">https://wallpaperaccess.com/full/1378983.jpg</a></p>
+        <img src="https://wallpaperaccess.com/full/1378983.jpg" alt="#4 Yoda">
+        <p>Character Picture Source: <a href="https://wallpaperaccess.com/full/1378983.jpg" target="_blank">https://wallpaperaccess.com/full/1378983.jpg</a></p>
       </div>
     </div>
   </body>

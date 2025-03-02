@@ -8,7 +8,7 @@
         margin: 0;
       }
       body {
-        background: url(https://wallpaperaccess.com/full/2151936.jpg) no-repeat center center fixed;
+        background: url('https://wallpaperaccess.com/full/2151936.jpg') no-repeat center center fixed;
         background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
@@ -44,12 +44,12 @@
       <div class="intro">
         <h1>#9 The Mandalorian (Din Djarin)</h1>
         <p>Din Djarin, also known as "the Mandalorian," or simply "Mando," was a human male Mandalorian warrior during the era of the New Republic.</p>
-        <p>Additional info source: <a href=https://starwars.fandom.com/wiki/Din_Djarin target="_blank">https://starwars.fandom.com/wiki/Din_Djarin</a></p>
-        <p>Background Image Source: <a href=https://wallpaperaccess.com/full/2151936.jpg target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
+        <p>Additional info source: <a href="https://starwars.fandom.com/wiki/Din_Djarin" target="_blank">https://starwars.fandom.com/wiki/Din_Djarin</a></p>
+        <p>Background Image Source: <a href="https://wallpaperaccess.com/full/2151936.jpg" target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
       </div>
       <div class="picture">
-        <img src=https://wallpaperaccess.com/full/8498887.jpg alt=#9 The Mandalorian (Din Djarin)>
-        <p>Character Picture Source: <a href=https://wallpaperaccess.com/full/8498887.jpg target="_blank">https://wallpaperaccess.com/full/8498887.jpg</a></p>
+        <img src="https://wallpaperaccess.com/full/8498887.jpg" alt="#9 The Mandalorian (Din Djarin)">
+        <p>Character Picture Source: <a href="https://wallpaperaccess.com/full/8498887.jpg" target="_blank">https://wallpaperaccess.com/full/8498887.jpg</a></p>
       </div>
     </div>
   </body>

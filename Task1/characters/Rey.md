@@ -8,7 +8,7 @@
         margin: 0;
       }
       body {
-        background: url(https://wallpaperaccess.com/full/2151936.jpg) no-repeat center center fixed;
+        background: url('https://wallpaperaccess.com/full/2151936.jpg') no-repeat center center fixed;
         background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
@@ -44,12 +44,12 @@
       <div class="intro">
         <h1>#8 Rey</h1>
         <p>Rey Skywalker, known only as Rey throughout the First Order-Resistance War, was a Force-sensitive human female Jedi who fought on the side of the Resistance during the war.</p>
-        <p>Additional info source: <a href=https://starwars.fandom.com/wiki/Rey_Skywalker target="_blank">https://starwars.fandom.com/wiki/Rey_Skywalker</a></p>
-        <p>Background Image Source: <a href=https://wallpaperaccess.com/full/2151936.jpg target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
+        <p>Additional info source: <a href="https://starwars.fandom.com/wiki/Rey_Skywalker" target="_blank">https://starwars.fandom.com/wiki/Rey_Skywalker</a></p>
+        <p>Background Image Source: <a href="https://wallpaperaccess.com/full/2151936.jpg" target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
       </div>
       <div class="picture">
-        <img src=https://wallpaperaccess.com/full/544527.jpg alt=#8 Rey>
-        <p>Character Picture Source: <a href=https://wallpaperaccess.com/full/544527.jpg target="_blank">https://wallpaperaccess.com/full/544527.jpg</a></p>
+        <img src="https://wallpaperaccess.com/full/544372.jpg" alt="#8 Rey">
+        <p>Character Picture Source: <a href="https://wallpaperaccess.com/full/544372.jpg" target="_blank">https://wallpaperaccess.com/full/544372.jpg</a></p>
       </div>
     </div>
   </body>

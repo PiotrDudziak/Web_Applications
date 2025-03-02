@@ -8,7 +8,7 @@
         margin: 0;
       }
       body {
-        background: url(https://wallpaperaccess.com/full/2151936.jpg) no-repeat center center fixed;
+        background: url('https://wallpaperaccess.com/full/2151936.jpg') no-repeat center center fixed;
         background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
@@ -44,12 +44,12 @@
       <div class="intro">
         <h1>#15 Mace Windu</h1>
         <p>Mace Windu was a revered Force-sensitive human male Jedi Master and member of the Jedi High Council during the last years of the Republic Era.</p>
-        <p>Additional info source: <a href=https://starwars.fandom.com/wiki/Mace_Windu target="_blank">https://starwars.fandom.com/wiki/Mace_Windu</a></p>
-        <p>Background Image Source: <a href=https://wallpaperaccess.com/full/2151936.jpg target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
+        <p>Additional info source: <a href="https://starwars.fandom.com/wiki/Mace_Windu" target="_blank">https://starwars.fandom.com/wiki/Mace_Windu</a></p>
+        <p>Background Image Source: <a href="https://wallpaperaccess.com/full/2151936.jpg" target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
       </div>
       <div class="picture">
-        <img src=https://wallpaperaccess.com/full/7261198.png alt=#15 Mace Windu>
-        <p>Character Picture Source: <a href=https://wallpaperaccess.com/full/7261198.png target="_blank">https://wallpaperaccess.com/full/7261198.png</a></p>
+        <img src="https://wallpaperaccess.com/full/7261198.png" alt="#15 Mace Windu">
+        <p>Character Picture Source: <a href="https://wallpaperaccess.com/full/7261198.png" target="_blank">https://wallpaperaccess.com/full/7261198.png</a></p>
       </div>
     </div>
   </body>
