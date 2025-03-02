@@ -2,36 +2,26 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Star Wars Characters Catalog</title>
     <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-      }
-      body {
-        background: url(https://wallpaperaccess.com/full/368503.jpg) no-repeat center center fixed;
-        background-size: cover;
-        font-family: Arial, sans-serif;
-        color: #FFFFFF;
-      }
-      .content {
-        position: relative;
-        padding: 20px;
-        min-height: 100vh;
-        text-shadow: 8px 8px 16px rgba(0, 0, 0, 1);
-        background-color: rgba(0, 0, 0, 0.7);
-      }
-      a {
-        color: #ADD8E6;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-      }
-      li {
-        margin-bottom: 10px;
-      }
+      html, body { height: 100%; margin: 0; }
+body { background: url(https://wallpaperaccess.com/full/368503.jpg) no-repeat center center fixed; background-size: cover; font-family: Arial, sans-serif; color: #FFFFFF; }
+.content { padding: 20px; min-height: 100vh; background-color: rgba(0, 0, 0, 0.5); }
+h1 { font-size: 2.5rem; }
+p { font-size: 1.125rem; }
+a { color: #ADD8E6; }
+/* Tablet devices */
+@media (max-width: 768px) {
+  .content { padding: 15px; }
+  h1 { font-size: 2rem; }
+  p { font-size: 1rem; }
+}
+/* Mobile devices */
+@media (max-width: 480px) {
+  .content { padding: 10px; }
+  h1 { font-size: 1.5rem; }
+  p { font-size: 0.9rem; }
+}
     </style>
   </head>
   <body>
@@ -54,7 +44,9 @@
         <li><a href="characters/Count_Dooku__Darth_Tyranus_">#14 Count Dooku (Darth Tyranus)</a></li>
         <li><a href="characters/Mace_Windu">#15 Mace Windu</a></li>
 </ul>
-      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/368503.jpg" target="_blank">https://wallpaperaccess.com/full/368503.jpg</a></em></p>
+      <p><em>Background Image Source:
+         <a href="https://wallpaperaccess.com/full/368503.jpg" target="_blank">https://wallpaperaccess.com/full/368503.jpg</a>
+      </em></p>
     </div>
   </body>
 </html>

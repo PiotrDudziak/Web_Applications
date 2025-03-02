@@ -1,29 +1,26 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Star Wars Introduction</title>
     <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-      }
-      body {
-        background: url(https://images3.alphacoders.com/114/thumb-1920-11439.png) no-repeat center center fixed;
-        background-size: cover;
-        font-family: Arial, sans-serif;
-        color: #FFFFFF;
-      }
-      .content {
-        position: relative;
-        padding: 20px;
-        min-height: 100vh;
-        text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-      a {
-        color: #ADD8E6;
-      }
+      html, body { height: 100%; margin: 0; }
+body { background: url(https://images3.alphacoders.com/114/thumb-1920-11439.png) no-repeat center center fixed; background-size: cover; font-family: Arial, sans-serif; color: #FFFFFF; }
+.content { padding: 20px; min-height: 100vh; background-color: rgba(0, 0, 0, 0.5); }
+h1 { font-size: 2.5rem; }
+p { font-size: 1.125rem; }
+a { color: #ADD8E6; }
+/* Tablet devices */
+@media (max-width: 768px) {
+  .content { padding: 15px; }
+  h1 { font-size: 2rem; }
+  p { font-size: 1rem; }
+}
+/* Mobile devices */
+@media (max-width: 480px) {
+  .content { padding: 10px; }
+  h1 { font-size: 1.5rem; }
+  p { font-size: 0.9rem; }
+}
     </style>
   </head>
   <body>
@@ -41,8 +38,12 @@
       <p>
 Star Wars is an American epic space-opera media franchise, centered on a film series created by George Lucas that includes Star Wars (1977), The Empire Strikes Back (1980), and Return of the Jedi (1983). The series depicts the adventures of various characters "a long time ago in a galaxy far, far away". Many derivative Star Wars works have been produced in conjunction with, between, and after the original trilogy of films, and later installments. This body of work was collectively known as the Star Wars Expanded Universe for decades.</p>
       <p><em>Source: <a href="https://en.wikipedia.org/wiki/List_of_Star_Wars_books" target="_blank">https://en.wikipedia.org/wiki/List_of_Star_Wars_books</a></em></p>
-      <h3>List of some of the characters from franchise: <a href="star_wars_list">Visit the Star Wars Characters Catalog</a></h3>
-      <p><em>Background Image Source: <a href="https://images3.alphacoders.com/114/thumb-1920-11439.png" target="_blank">https://images3.alphacoders.com/114/thumb-1920-11439.png</a></em></p>
+      <h3>List of some characters from the franchise:
+        <a href="star_wars_list">Visit the Star Wars Characters Catalog</a>
+      </h3>
+      <p><em>Background Image Source:
+         <a href="https://images3.alphacoders.com/114/thumb-1920-11439.png" target="_blank">https://images3.alphacoders.com/114/thumb-1920-11439.png</a>
+      </em></p>
     </div>
   </body>
 </html>

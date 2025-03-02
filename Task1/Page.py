@@ -9,6 +9,28 @@ CHARACTERS_DIR = os.path.join(OUTPUT_DIR, "characters")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(CHARACTERS_DIR, exist_ok=True)
 
+# Global responsive CSS variable with media queries
+responsive_css = """
+html, body {{ height: 100%; margin: 0; }}
+body {{ background: url({bg}) no-repeat center center fixed; background-size: cover; font-family: Arial, sans-serif; color: #FFFFFF; }}
+.content {{ padding: 20px; min-height: 100vh; background-color: rgba(0, 0, 0, 0.5); }}
+h1 {{ font-size: 2.5rem; }}
+p {{ font-size: 1.125rem; }}
+a {{ color: #ADD8E6; }}
+/* Tablet devices */
+@media (max-width: 768px) {{
+  .content {{ padding: 15px; }}
+  h1 {{ font-size: 2rem; }}
+  p {{ font-size: 1rem; }}
+}}
+/* Mobile devices */
+@media (max-width: 480px) {{
+  .content {{ padding: 10px; }}
+  h1 {{ font-size: 1.5rem; }}
+  p {{ font-size: 0.9rem; }}
+}}
+""".strip()
+
 # ------------------------------
 # Part 1: Main Website (star_wars.md file creation)
 # ------------------------------
@@ -47,29 +69,9 @@ main_md_content = f"""
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Star Wars Introduction</title>
     <style>
-      html, body {{
-        height: 100%;
-        margin: 0;
-      }}
-      body {{
-        background: url({bg_image_url}) no-repeat center center fixed;
-        background-size: cover;
-        font-family: Arial, sans-serif;
-        color: #FFFFFF;
-      }}
-      .content {{
-        position: relative;
-        padding: 20px;
-        min-height: 100vh;
-        text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
-        background-color: rgba(0, 0, 0, 0.5);
-      }}
-      a {{
-        color: #ADD8E6;
-      }}
+      {responsive_css.format(bg=bg_image_url)}
     </style>
   </head>
   <body>
@@ -86,8 +88,12 @@ main_md_content = f"""
       <h2>Star Wars Books</h2>
       <p>{books_info}</p>
       <p><em>Source: <a href="{books_source}" target="_blank">{books_source}</a></em></p>
-      <h3>List of some of the characters from franchise: <a href="star_wars_list">Visit the Star Wars Characters Catalog</a></h3>
-      <p><em>Background Image Source: <a href="{bg_image_source}" target="_blank">{bg_image_source}</a></em></p>
+      <h3>List of some characters from the franchise:
+        <a href="star_wars_list">Visit the Star Wars Characters Catalog</a>
+      </h3>
+      <p><em>Background Image Source:
+         <a href="{bg_image_source}" target="_blank">{bg_image_source}</a>
+      </em></p>
     </div>
   </body>
 </html>
@@ -136,7 +142,7 @@ for element in elements:
 
     with DDGS() as ddgs:
         text_results = ddgs.text("fandom information " + search_name, max_results=1)
-        image_results = ddgs.images("wallpaper_access star_wars" + search_name, max_results=1)
+        image_results = ddgs.images("wallpaper_access star_wars " + search_name, max_results=1)
 
     if text_results and len(text_results) > 0:
         full_text = ""
@@ -168,36 +174,9 @@ character_list_md = f"""
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Star Wars Characters Catalog</title>
     <style>
-      html, body {{
-        height: 100%;
-        margin: 0;
-      }}
-      body {{
-        background: url({bg_list_url}) no-repeat center center fixed;
-        background-size: cover;
-        font-family: Arial, sans-serif;
-        color: #FFFFFF;
-      }}
-      .content {{
-        position: relative;
-        padding: 20px;
-        min-height: 100vh;
-        text-shadow: 8px 8px 16px rgba(0, 0, 0, 1);
-        background-color: rgba(0, 0, 0, 0.7);
-      }}
-      a {{
-        color: #ADD8E6;
-      }}
-      ul {{
-        list-style: none;
-        padding: 0;
-      }}
-      li {{
-        margin-bottom: 10px;
-      }}
+      {responsive_css.format(bg=bg_list_url)}
     </style>
   </head>
   <body>
@@ -205,14 +184,14 @@ character_list_md = f"""
       <h1>Star Wars Characters Catalog</h1>
       <ul>
 """
-
 for char in characters:
     safe_name = re.sub(r"[^a-zA-Z0-9_\-]", "_", re.sub(r"^\#\d+\s*", "", char["name"]))
     character_list_md += f'        <li><a href="characters/{safe_name}">{char["name"]}</a></li>\n'
-
 character_list_md += f"""
       </ul>
-      <p><em>Background Image Source: <a href="{bg_list_source}" target="_blank">{bg_list_source}</a></em></p>
+      <p><em>Background Image Source:
+         <a href="{bg_list_source}" target="_blank">{bg_list_source}</a>
+      </em></p>
     </div>
   </body>
 </html>
@@ -223,7 +202,7 @@ with open(os.path.join(OUTPUT_DIR, "star_wars_list.md"), "w", encoding="utf-8") 
 print("Character list Markdown file (star_wars_list.md) generated.")
 
 # ------------------------------
-# Part 3: Details Subpages (individual character details in the characters directory)
+# Part 3: Details Subpages (individual character details)
 # ------------------------------
 
 with DDGS() as ddgs:
@@ -242,63 +221,58 @@ for char in characters:
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{char['name']}</title>
     <style>
-      html, body {{
-        height: 100%;
-        margin: 0;
-      }}
-      body {{
-        background: url('{bg_theme}') no-repeat center center fixed;
-        background-size: cover;
-        font-family: Arial, sans-serif;
-        color: #FFFFFF;
-      }}
-      .content {{
+      {responsive_css.format(bg=bg_theme)}
+      /* Extra styles for splitting content and image */
+      .detail-container {{
         display: flex;
-        min-height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 20px;
+        justify-content: space-between;
+        align-items: flex-start;
       }}
-      .intro {{
+      .detail-container .text {{
         flex: 1;
-        padding-right: 20px;
+        margin-right: 20px;
       }}
-      .picture {{
+      .detail-container .image {{
         flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        text-align: center;
       }}
-      .picture img {{
-        max-width: 100%;
-        height: auto;
-        max-height: 300px;
-      }}
-      a {{
-        color: #ADD8E6;
+      /* On small devices, stack the columns vertically */
+      @media (max-width: 768px) {{
+        .detail-container {{
+          flex-direction: column;
+        }}
+        .detail-container .text {{
+          margin-right: 0;
+        }}
       }}
     </style>
   </head>
   <body>
     <div class="content">
-      <div class="intro">
-        <h1>{char['name']}</h1>
-        <p>{char["info"]}</p>
-        <p>Additional info source: <a href="{char["info_src"]}" target="_blank">{char["info_src"]}</a></p>
-        <p>Background Image Source: <a href="{bg_theme_source}" target="_blank">{bg_theme_source}</a></p>
-      </div>
-      <div class="picture">
-        <img src="{char_img}" alt="{char['name']}">
-        <p>Character Picture Source: <a href="{char["img_src"]}" target="_blank">{char["img_src"]}</a></p>
+      <h1>{char['name']}</h1>
+      <div class="detail-container">
+        <div class="text">
+          <p>{char["info"]}</p>
+          <p>Additional info source:
+            <a href="{char["info_src"]}" target="_blank">{char["info_src"]}</a>
+          </p>
+          <p>Background Image Source:
+            <a href="{bg_theme_source}" target="_blank">{bg_theme_source}</a>
+          </p>
+        </div>
+        <div class="image">
+          <img src="{char_img}" alt="{char['name']}" style="max-width:100%; height:auto; max-height:300px;">
+          <p>Character Picture Source:
+            <a href="{char["img_src"]}" target="_blank">{char["img_src"]}</a>
+          </p>
+        </div>
       </div>
     </div>
   </body>
 </html>
 """.strip()
-
     with open(os.path.join(CHARACTERS_DIR, file_name), "w", encoding="utf-8") as f:
         f.write(detail_md_content)
-
 print("Detail subpages generated.")
