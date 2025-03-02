@@ -55,7 +55,7 @@ main_md_content = f"""
       }}
       body {{
         background: url({bg_image_url}) no-repeat center center fixed;
-        background-size: cover;
+        background-size: contain;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }}
@@ -176,7 +176,7 @@ character_list_md = f"""
       }}
       body {{
         background: url({bg_list_url}) no-repeat center center fixed;
-        background-size: cover;
+        background-size: contain;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }}
@@ -246,7 +246,7 @@ for char in characters:
         background-image: url({bg_detail});
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: cover;
+        background-size: contain;
         background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
