@@ -46,7 +46,6 @@ books_info, books_source = get_wikipedia_info("Star Wars books")
 
 # Build main Markdown file wrapped in HTML for background styling
 main_md_content = f"""
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -88,7 +87,7 @@ main_md_content = f"""
       <h2>Star Wars Books</h2>
       <p>{books_info}</p>
       <p><em>Source: <a href="{books_source}" target="_blank">{books_source}</a></em></p>
-      <h3>List of some of the characters from franchise: <a href="star_wars_list.md">Visit the Star Wars Characters Catalog</a></h3>
+      <h3>List of some of the characters from franchise: <a href="star_wars_list">Visit the Star Wars Characters Catalog</a></h3>
     </div>
   </body>
 </html>
