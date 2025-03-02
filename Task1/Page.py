@@ -206,7 +206,7 @@ character_list_md = f"""
 """
 
 for char in characters:
-    safe_name = re.sub(r"[^a-zA-Z0-9_\-]", "_", re.sub(r"^\#\d+\s*", "", char["name"])) + ".md"
+    safe_name = re.sub(r"[^a-zA-Z0-9_\-]", "_", re.sub(r"^\#\d+\s*", "", char["name"]))
     character_list_md += f'        <li><a href="characters/{safe_name}">{char["name"]}</a></li>\n'
 
 character_list_md += f"""
