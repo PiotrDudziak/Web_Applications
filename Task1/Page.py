@@ -55,7 +55,7 @@ main_md_content = f"""
       }}
       body {{
         background: url({bg_image_url}) no-repeat center center fixed;
-        background-size: contain;
+        background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }}
@@ -176,7 +176,7 @@ character_list_md = f"""
       }}
       body {{
         background: url({bg_list_url}) no-repeat center center fixed;
-        background-size: contain;
+        background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }}
@@ -225,13 +225,18 @@ print("Character list Markdown file (star_wars_list.md) generated.")
 # ------------------------------
 # Part 3: Details Subpages (individual character details in the characters directory)
 # ------------------------------
+with DDGS() as ddgs:
+    bg_theme_results = ddgs.images("wallpaperaccess star wars galaxy", max_results=1)
+bg_theme = (
+    bg_theme_results[0].get("image", "")
+    if bg_theme_results and len(bg_theme_results) > 0
+    else "assets/default_star_wars_bg.jpg"
+)
+bg_theme_source = bg_theme
 
 for char in characters:
     file_name = re.sub(r"[^a-zA-Z0-9_\-]", "_", re.sub(r"^\#\d+\s*", "", char["name"])) + ".md"
-    # Use the character image as background; if missing use a default image
-    bg_detail = char["img"] if char["img"] else "assets/default_star_wars_bg.jpg"
-
-    # Build HTML wrapper around the detail content without an inline image block
+    char_img = char["img"] if char["img"] else "assets/default_star_wars.jpg"
     detail_md_content = f"""
 <html>
   <head>
@@ -243,20 +248,31 @@ for char in characters:
         margin: 0;
       }}
       body {{
-        background-image: url({bg_detail});
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
-        background-attachment: fixed;
+        background: url({bg_theme}) no-repeat center center fixed;
+        background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }}
       .content {{
-        position: relative;
-        padding: 20px;
+        display: flex;
         min-height: 100vh;
-        text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
         background-color: rgba(0, 0, 0, 0.5);
+        padding: 20px;
+      }}
+      .intro {{
+        flex: 1;
+        padding-right: 20px;
+      }}
+      .picture {{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }}
+      .picture img {{
+        max-width: 100%;
+        height: auto;
+        max-height: 300px;
       }}
       a {{
         color: #ADD8E6;
@@ -265,13 +281,16 @@ for char in characters:
   </head>
   <body>
     <div class="content">
-      <h1>{char['name']}</h1>
-      <div>
-        <strong>Short Introduction:</strong>
+      <div class="intro">
+        <h1>{char['name']}</h1>
         <p>{char["info"]}</p>
-        Additional info source: <a href="{char["info_src"]}">{char["info_src"]}</a>
+        <p>Additional info source: <a href={char["info_src"]} target="_blank">{char["info_src"]}</a></p>
+        <p>Background Image Source: <a href={bg_theme_source} target="_blank">{bg_theme_source}</a></p>
       </div>
-      <p><em>Background Image Source: <a href="{char["img_src"]}" target="_blank">{char["img_src"]}</a></em></p>
+      <div class="picture">
+        <img src={char_img} alt={char['name']}>
+        <p>Character Picture Source: <a href={char["img_src"]} target="_blank">{char["img_src"]}</a></p>
+      </div>
     </div>
   </body>
 </html>

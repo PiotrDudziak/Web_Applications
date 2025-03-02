@@ -9,7 +9,7 @@
       }
       body {
         background: url(https://images3.alphacoders.com/114/thumb-1920-11439.png) no-repeat center center fixed;
-        background-size: contain;
+        background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }

@@ -10,7 +10,7 @@
       }
       body {
         background: url(https://wallpaperaccess.com/full/368503.jpg) no-repeat center center fixed;
-        background-size: contain;
+        background-size: cover;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
