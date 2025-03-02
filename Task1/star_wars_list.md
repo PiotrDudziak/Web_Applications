@@ -1,0 +1,17 @@
+## Star Wars Characters
+
+- [#1 Luke Skywalker](characters/Luke_Skywalker.md)
+- [#2 Darth Vader / Anakin Skywalker](characters/Darth_Vader___Anakin_Skywalker.md)
+- [#3 Princess Leia](characters/Princess_Leia.md)
+- [#4 Yoda](characters/Yoda.md)
+- [#5 Qimir (The Acolyte).](characters/Qimir__The_Acolyte__.md)
+- [#6 Obi-Wan Kenobi](characters/Obi-Wan_Kenobi.md)
+- [#7 Kylo Ren](characters/Kylo_Ren.md)
+- [#8 Rey](characters/Rey.md)
+- [#9 The Mandalorian (Din Djarin)](characters/The_Mandalorian__Din_Djarin_.md)
+- [#10 Ahsoka Tano](characters/Ahsoka_Tano.md)
+- [#11 Palpatine (Darth Sidious)](characters/Palpatine__Darth_Sidious_.md)
+- [#12 Qui-Gon Jinn](characters/Qui-Gon_Jinn.md)
+- [#13 Darth Maul](characters/Darth_Maul.md)
+- [#14 Count Dooku (Darth Tyranus)](characters/Count_Dooku__Darth_Tyranus_.md)
+- [#15 Mace Windu](characters/Mace_Windu.md)
