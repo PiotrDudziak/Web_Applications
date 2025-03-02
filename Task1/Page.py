@@ -228,26 +228,51 @@ print("Character list Markdown file (star_wars_list.md) generated.")
 
 for char in characters:
     file_name = re.sub(r"[^a-zA-Z0-9_\-]", "_", re.sub(r"^\#\d+\s*", "", char["name"])) + ".md"
-    detail_md_content = f"# {char['name']}\n\n"
-    img_section = ""
-    if char["img"]:
-        img_section = (
-            f'<img src="{char["img"]}" alt="{char["name"]}" '
-            f'style="max-height: 275px; max-width: 100%; min-height: 175px;"/>'
-            f'<br><br>Source: <a href="{char["img_src"]}" style="word-break: break-all;">{char["img_src"]}</a>'
-        )
-    detail_md_content += (
-        '<div style="display: flex;">\n'
-        '  <div style="flex: 1; padding-right: 10px;">\n'
-        '    <strong>Short Introduction:</strong>\n'
-        f'    <p>{char["info"]}</p>\n'
-        f'    Additional info source: <a href="{char["info_src"]}">{char["info_src"]}</a>\n'
-        '  </div>\n'
-        '  <div style="flex: 1; text-align: right;">\n'
-        f'    {img_section}\n'
-        '  </div>\n'
-        '</div>\n'
-    )
+    # Use the character image as background; if missing use a default image
+    bg_detail = char["img"] if char["img"] else "assets/default_star_wars_bg.jpg"
+    # Build HTML wrapper around the detail content without image block
+    detail_md_content = f"""
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{char['name']}</title>
+    <style>
+      html, body {{
+        height: 100%;
+        margin: 0;
+      }}
+      body {{
+        background: url({bg_detail}) no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        color: #FFFFFF;
+      }}
+      .content {{
+        position: relative;
+        padding: 20px;
+        min-height: 100vh;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+        background-color: rgba(0, 0, 0, 0.5);
+      }}
+      a {{
+        color: #ADD8E6;
+      }}
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>{char['name']}</h1>
+      <div>
+        <strong>Short Introduction:</strong>
+        <p>{char["info"]}</p>
+        Additional info source: <a href="{char["info_src"]}">{char["info_src"]}</a>
+      </div>
+      <p><em>Background Image Source: <a href="{char["img_src"]}" target="_blank">{char["img_src"]}</a></em></p>
+    </div>
+  </body>
+</html>
+""".strip()
+
     with open(os.path.join(CHARACTERS_DIR, file_name), "w", encoding="utf-8") as f:
         f.write(detail_md_content)
 
