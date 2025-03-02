@@ -136,7 +136,7 @@ for element in elements:
 
     with DDGS() as ddgs:
         text_results = ddgs.text("fandom information " + search_name, max_results=1)
-        image_results = ddgs.images(search_name, max_results=1)
+        image_results = ddgs.images("wallpaper_access star_wars" + search_name, max_results=1)
 
     if text_results and len(text_results) > 0:
         full_text = ""
@@ -230,7 +230,8 @@ for char in characters:
     file_name = re.sub(r"[^a-zA-Z0-9_\-]", "_", re.sub(r"^\#\d+\s*", "", char["name"])) + ".md"
     # Use the character image as background; if missing use a default image
     bg_detail = char["img"] if char["img"] else "assets/default_star_wars_bg.jpg"
-    # Build HTML wrapper around the detail content without image block
+
+    # Build HTML wrapper around the detail content without an inline image block
     detail_md_content = f"""
 <html>
   <head>
@@ -242,8 +243,11 @@ for char in characters:
         margin: 0;
       }}
       body {{
-        background: url({bg_detail}) no-repeat center center fixed;
+        background-image: url({bg_detail});
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }}
