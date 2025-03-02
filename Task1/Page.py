@@ -47,6 +47,7 @@ main_md_content = f"""
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Star Wars Introduction</title>
     <style>
       html, body {{
@@ -113,7 +114,6 @@ bg_list_source = (
     else ""
 )
 
-
 url = "https://kenjosabers.com/blogs/news/top-15-most-popular-star-wars-characters-icons-from-a-galaxy-far-far-away"
 response = requests.get(url)
 response.raise_for_status()
@@ -168,6 +168,7 @@ character_list_md = f"""
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Star Wars Characters Catalog</title>
     <style>
       html, body {{
@@ -221,7 +222,6 @@ with open(os.path.join(OUTPUT_DIR, "star_wars_list.md"), "w", encoding="utf-8") 
     f.write(character_list_md)
 print("Character list Markdown file (star_wars_list.md) generated.")
 
-
 # ------------------------------
 # Part 3: Details Subpages (individual character details in the characters directory)
 # ------------------------------
@@ -242,6 +242,7 @@ for char in characters:
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{char['name']}</title>
     <style>
       html, body {{
