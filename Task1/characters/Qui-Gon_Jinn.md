@@ -1,6 +1,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>#12 Qui-Gon Jinn</title>
     <style>
       html, body {
@@ -48,8 +49,8 @@
         <p>Background Image Source: <a href="https://wallpaperaccess.com/full/2151936.jpg" target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
       </div>
       <div class="picture">
-        <img src="https://wallpaperaccess.com/full/2647051.png" alt="#12 Qui-Gon Jinn">
-        <p>Character Picture Source: <a href="https://wallpaperaccess.com/full/2647051.png" target="_blank">https://wallpaperaccess.com/full/2647051.png</a></p>
+        <img src="https://wallpaperaccess.com/full/2647103.png" alt="#12 Qui-Gon Jinn">
+        <p>Character Picture Source: <a href="https://wallpaperaccess.com/full/2647103.png" target="_blank">https://wallpaperaccess.com/full/2647103.png</a></p>
       </div>
     </div>
   </body>

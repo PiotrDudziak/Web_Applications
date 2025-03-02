@@ -1,6 +1,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>#10 Ahsoka Tano</title>
     <style>
       html, body {
@@ -48,8 +49,8 @@
         <p>Background Image Source: <a href="https://wallpaperaccess.com/full/2151936.jpg" target="_blank">https://wallpaperaccess.com/full/2151936.jpg</a></p>
       </div>
       <div class="picture">
-        <img src="https://wallpaperaccess.com/full/1891444.jpg" alt="#10 Ahsoka Tano">
-        <p>Character Picture Source: <a href="https://wallpaperaccess.com/full/1891444.jpg" target="_blank">https://wallpaperaccess.com/full/1891444.jpg</a></p>
+        <img src="https://wallpaperaccess.com/full/2663491.jpg" alt="#10 Ahsoka Tano">
+        <p>Character Picture Source: <a href="https://wallpaperaccess.com/full/2663491.jpg" target="_blank">https://wallpaperaccess.com/full/2663491.jpg</a></p>
       </div>
     </div>
   </body>
