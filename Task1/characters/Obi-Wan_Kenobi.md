@@ -8,8 +8,11 @@
         margin: 0;
       }
       body {
-        background: url(https://wallpaperaccess.com/full/1183671.jpg) no-repeat center center fixed;
+        background-image: url(https://wallpaperaccess.com/full/1183671.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }

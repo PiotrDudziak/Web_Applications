@@ -8,8 +8,11 @@
         margin: 0;
       }
       body {
-        background: url(http://img2.wikia.nocookie.net/__cb20130812124410/starwars/images/4/4b/Qui-Gon_Jinn_Portrait.png) no-repeat center center fixed;
+        background-image: url(https://wallpaperaccess.com/full/2647103.png);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
@@ -33,7 +36,7 @@
         <p>Qui-Gon Jinn, a Force-sensitive human male, was a venerable if maverick Jedi Master who lived during the last years of the Republic Era. He was a wise and well-respected member of the Jedi Order, and was offered a seat on the Jedi Council, but chose to reject and follow his own path.</p>
         Additional info source: <a href="https://starwars.fandom.com/wiki/Qui-Gon_Jinn">https://starwars.fandom.com/wiki/Qui-Gon_Jinn</a>
       </div>
-      <p><em>Background Image Source: <a href="http://img2.wikia.nocookie.net/__cb20130812124410/starwars/images/4/4b/Qui-Gon_Jinn_Portrait.png" target="_blank">http://img2.wikia.nocookie.net/__cb20130812124410/starwars/images/4/4b/Qui-Gon_Jinn_Portrait.png</a></em></p>
+      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/2647103.png" target="_blank">https://wallpaperaccess.com/full/2647103.png</a></em></p>
     </div>
   </body>
 </html>

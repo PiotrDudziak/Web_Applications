@@ -8,8 +8,11 @@
         margin: 0;
       }
       body {
-        background: url(https://vignette.wikia.nocookie.net/starwars/images/4/49/Lukeportrait.jpg/revision/latest?cb=20151221055502&path-prefix=ro) no-repeat center center fixed;
+        background-image: url(https://wallpaperaccess.com/full/714043.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
@@ -33,7 +36,7 @@
         <p>Luke Skywalker, a Force-sensitive human male, was a legendary Jedi Master who fought in the Galactic Civil War during the reign of the Galactic Empire.</p>
         Additional info source: <a href="https://starwars.fandom.com/wiki/Luke_Skywalker">https://starwars.fandom.com/wiki/Luke_Skywalker</a>
       </div>
-      <p><em>Background Image Source: <a href="https://vignette.wikia.nocookie.net/starwars/images/4/49/Lukeportrait.jpg/revision/latest?cb=20151221055502&path-prefix=ro" target="_blank">https://vignette.wikia.nocookie.net/starwars/images/4/49/Lukeportrait.jpg/revision/latest?cb=20151221055502&path-prefix=ro</a></em></p>
+      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/714043.jpg" target="_blank">https://wallpaperaccess.com/full/714043.jpg</a></em></p>
     </div>
   </body>
 </html>

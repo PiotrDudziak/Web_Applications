@@ -8,8 +8,11 @@
         margin: 0;
       }
       body {
-        background: url(https://e1.pxfuel.com/desktop-wallpaper/77/658/desktop-wallpaper-do-you-think-that-mace-windu-genuinely-defeated-palpatine-in-rots-mace-windu-lightsaber-computer.jpg) no-repeat center center fixed;
+        background-image: url(https://wallpaperaccess.com/full/7261198.png);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
@@ -33,7 +36,7 @@
         <p>Mace Windu was a revered Force-sensitive human male Jedi Master and member of the Jedi High Council during the last years of the Republic Era.</p>
         Additional info source: <a href="https://starwars.fandom.com/wiki/Mace_Windu">https://starwars.fandom.com/wiki/Mace_Windu</a>
       </div>
-      <p><em>Background Image Source: <a href="https://e1.pxfuel.com/desktop-wallpaper/77/658/desktop-wallpaper-do-you-think-that-mace-windu-genuinely-defeated-palpatine-in-rots-mace-windu-lightsaber-computer.jpg" target="_blank">https://e1.pxfuel.com/desktop-wallpaper/77/658/desktop-wallpaper-do-you-think-that-mace-windu-genuinely-defeated-palpatine-in-rots-mace-windu-lightsaber-computer.jpg</a></em></p>
+      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/7261198.png" target="_blank">https://wallpaperaccess.com/full/7261198.png</a></em></p>
     </div>
   </body>
 </html>

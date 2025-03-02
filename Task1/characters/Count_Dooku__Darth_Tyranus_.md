@@ -8,8 +8,11 @@
         margin: 0;
       }
       body {
-        background: url(https://i.pinimg.com/originals/63/98/2d/63982d3b4bde8799a227dd5fea9149e2.jpg) no-repeat center center fixed;
+        background-image: url(https://wallpaperaccess.com/full/4646966.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
@@ -33,7 +36,7 @@
         <p>Dooku was a Force-sensitive human male Serennian who served as a Jedi Master during the waning years of the Galactic Republic and later Count of House Serenno. He became dissatisfied with the Jedi Order and fell to the dark side of the Force, becoming the Dark Lord of the Sith Darth Tyranus.</p>
         Additional info source: <a href="https://starwars.fandom.com/wiki/Dooku">https://starwars.fandom.com/wiki/Dooku</a>
       </div>
-      <p><em>Background Image Source: <a href="https://i.pinimg.com/originals/63/98/2d/63982d3b4bde8799a227dd5fea9149e2.jpg" target="_blank">https://i.pinimg.com/originals/63/98/2d/63982d3b4bde8799a227dd5fea9149e2.jpg</a></em></p>
+      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/4646966.jpg" target="_blank">https://wallpaperaccess.com/full/4646966.jpg</a></em></p>
     </div>
   </body>
 </html>

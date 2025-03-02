@@ -8,8 +8,11 @@
         margin: 0;
       }
       body {
-        background: url(http://images6.fanpop.com/image/photos/45400000/Qimir-Star-Wars-The-Acolyte-Character-stills-star-wars-45457061-1566-882.jpg) no-repeat center center fixed;
+        background-image: url(https://wallpaperaccess.com/full/14250316.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
@@ -33,7 +36,7 @@
         <p>Qimir, more commonly known as The Master or The Stranger, is the main antagonist in the live-action Disney+ series The Acolyte. The Force: Due to The Stranger's connection to the Force, he was extremely powerful.</p>
         Additional info source: <a href="https://disney.fandom.com/wiki/Qimir">https://disney.fandom.com/wiki/Qimir</a>
       </div>
-      <p><em>Background Image Source: <a href="http://images6.fanpop.com/image/photos/45400000/Qimir-Star-Wars-The-Acolyte-Character-stills-star-wars-45457061-1566-882.jpg" target="_blank">http://images6.fanpop.com/image/photos/45400000/Qimir-Star-Wars-The-Acolyte-Character-stills-star-wars-45457061-1566-882.jpg</a></em></p>
+      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/14250316.jpg" target="_blank">https://wallpaperaccess.com/full/14250316.jpg</a></em></p>
     </div>
   </body>
 </html>

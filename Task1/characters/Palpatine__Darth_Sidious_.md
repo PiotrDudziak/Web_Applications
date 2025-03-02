@@ -8,8 +8,11 @@
         margin: 0;
       }
       body {
-        background: url(https://images5.fanpop.com/image/photos/26600000/Palpatine-Darth-Sidious-The-Emperor-star-wars-26679657-1257-1600.jpg) no-repeat center center fixed;
+        background-image: url(https://wallpaperaccess.com/full/5271994.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
@@ -33,7 +36,7 @@
         <p>Darth Sidious, born Sheev Palpatine and also simply known as The Emperor, was a male human Dark Lord of the Sith and Emperor of the Galactic Empire, with his reign lasting from 19 BBY to 4 ABY.</p>
         Additional info source: <a href="https://starwars.fandom.com/wiki/Darth_Sidious">https://starwars.fandom.com/wiki/Darth_Sidious</a>
       </div>
-      <p><em>Background Image Source: <a href="https://images5.fanpop.com/image/photos/26600000/Palpatine-Darth-Sidious-The-Emperor-star-wars-26679657-1257-1600.jpg" target="_blank">https://images5.fanpop.com/image/photos/26600000/Palpatine-Darth-Sidious-The-Emperor-star-wars-26679657-1257-1600.jpg</a></em></p>
+      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/5271994.jpg" target="_blank">https://wallpaperaccess.com/full/5271994.jpg</a></em></p>
     </div>
   </body>
 </html>

@@ -8,8 +8,11 @@
         margin: 0;
       }
       body {
-        background: url(http://www.hdwallpapers.in/walls/star_wars_the_force_awakens_rey-wide.jpg) no-repeat center center fixed;
+        background-image: url(https://wallpaperaccess.com/full/544372.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
@@ -33,7 +36,7 @@
         <p>Rey Skywalker, known only as Rey throughout the First Order-Resistance War, was a Force-sensitive human female Jedi who fought on the side of the Resistance during the war.</p>
         Additional info source: <a href="https://starwars.fandom.com/wiki/Rey_Skywalker">https://starwars.fandom.com/wiki/Rey_Skywalker</a>
       </div>
-      <p><em>Background Image Source: <a href="http://www.hdwallpapers.in/walls/star_wars_the_force_awakens_rey-wide.jpg" target="_blank">http://www.hdwallpapers.in/walls/star_wars_the_force_awakens_rey-wide.jpg</a></em></p>
+      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/544372.jpg" target="_blank">https://wallpaperaccess.com/full/544372.jpg</a></em></p>
     </div>
   </body>
 </html>

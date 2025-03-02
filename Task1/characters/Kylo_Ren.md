@@ -8,8 +8,11 @@
         margin: 0;
       }
       body {
-        background: url(https://images.hdqwalls.com/download/kylo-ren-star-wars-the-last-jedi-5k-d7-3840x2400.jpg) no-repeat center center fixed;
+        background-image: url(https://wallpaperaccess.com/full/492506.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
@@ -33,7 +36,7 @@
         <p>Ben Solo, formerly known as Kylo Ren, is the central antagonist of the Star Wars sequel trilogy.Ben is the son of Han Solo and Leia Organa, the nephew of Luke Skywalker, and the grandson of Anakin Skywalker and Padmé Amidala.After turning to the dark side, he becomes the apprentice of Supreme Leader Snoke, and later renames himself Kylo Ren upon becoming the Master of the Knights of Ren.</p>
         Additional info source: <a href="https://disney.fandom.com/wiki/Kylo_Ren">https://disney.fandom.com/wiki/Kylo_Ren</a>
       </div>
-      <p><em>Background Image Source: <a href="https://images.hdqwalls.com/download/kylo-ren-star-wars-the-last-jedi-5k-d7-3840x2400.jpg" target="_blank">https://images.hdqwalls.com/download/kylo-ren-star-wars-the-last-jedi-5k-d7-3840x2400.jpg</a></em></p>
+      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/492506.jpg" target="_blank">https://wallpaperaccess.com/full/492506.jpg</a></em></p>
     </div>
   </body>
 </html>

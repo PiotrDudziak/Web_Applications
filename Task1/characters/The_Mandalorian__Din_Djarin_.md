@@ -8,8 +8,11 @@
         margin: 0;
       }
       body {
-        background: url(https://static.wikia.nocookie.net/disney/images/a/a4/The_Mandalorian.jpg/revision/latest?cb=20230924192136) no-repeat center center fixed;
+        background-image: url(https://wallpaperaccess.com/full/8498887.jpg);
+        background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: #FFFFFF;
       }
@@ -33,7 +36,7 @@
         <p>Din Djarin, also known as "the Mandalorian," or simply "Mando," was a human male Mandalorian warrior during the era of the New Republic.</p>
         Additional info source: <a href="https://starwars.fandom.com/wiki/Din_Djarin">https://starwars.fandom.com/wiki/Din_Djarin</a>
       </div>
-      <p><em>Background Image Source: <a href="https://static.wikia.nocookie.net/disney/images/a/a4/The_Mandalorian.jpg/revision/latest?cb=20230924192136" target="_blank">https://static.wikia.nocookie.net/disney/images/a/a4/The_Mandalorian.jpg/revision/latest?cb=20230924192136</a></em></p>
+      <p><em>Background Image Source: <a href="https://wallpaperaccess.com/full/8498887.jpg" target="_blank">https://wallpaperaccess.com/full/8498887.jpg</a></em></p>
     </div>
   </body>
 </html>
