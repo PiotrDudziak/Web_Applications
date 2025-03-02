@@ -1,12 +1,39 @@
-# #3 Princess Leia
-
-<div style="display: flex;">
-  <div style="flex: 1; padding-right: 10px;">
-    <strong>Short Introduction:</strong>
-    <p>Leia Skywalker Organa Solo was a Force-sensitive human Alderaanian female politician, Jedi, and military leader who served in the Alliance to Restore the Republic during the Imperial Era and the New Republic and Resistance in the subsequent New Republic Era.</p>
-    Additional info source: <a href="https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo">https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo</a>
-  </div>
-  <div style="flex: 1; text-align: right;">
-    <img src="https://images.hdqwalls.com/wallpapers/princess-leia-star-wars-the-last-jedi-2017-5k-vc.jpg" alt="#3 Princess Leia" style="max-height: 275px; max-width: 100%; min-height: 175px;"/><br><br>Source: <a href="https://images.hdqwalls.com/wallpapers/princess-leia-star-wars-the-last-jedi-2017-5k-vc.jpg" style="word-break: break-all;">https://images.hdqwalls.com/wallpapers/princess-leia-star-wars-the-last-jedi-2017-5k-vc.jpg</a>
-  </div>
-</div>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>#3 Princess Leia</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        background: url(https://images.hdqwalls.com/wallpapers/princess-leia-star-wars-the-last-jedi-2017-5k-vc.jpg) no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        color: #FFFFFF;
+      }
+      .content {
+        position: relative;
+        padding: 20px;
+        min-height: 100vh;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      a {
+        color: #ADD8E6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>#3 Princess Leia</h1>
+      <div>
+        <strong>Short Introduction:</strong>
+        <p>Leia Skywalker Organa Solo was a Force-sensitive human Alderaanian female politician, Jedi, and military leader who served in the Alliance to Restore the Republic during the Imperial Era and the New Republic and Resistance in the subsequent New Republic Era.</p>
+        Additional info source: <a href="https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo">https://starwars.fandom.com/wiki/Leia_Skywalker_Organa_Solo</a>
+      </div>
+      <p><em>Background Image Source: <a href="https://images.hdqwalls.com/wallpapers/princess-leia-star-wars-the-last-jedi-2017-5k-vc.jpg" target="_blank">https://images.hdqwalls.com/wallpapers/princess-leia-star-wars-the-last-jedi-2017-5k-vc.jpg</a></em></p>
+    </div>
+  </body>
+</html>

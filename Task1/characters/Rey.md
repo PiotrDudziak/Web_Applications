@@ -1,12 +1,39 @@
-# #8 Rey
-
-<div style="display: flex;">
-  <div style="flex: 1; padding-right: 10px;">
-    <strong>Short Introduction:</strong>
-    <p>Rey Skywalker, known only as Rey throughout the First Order-Resistance War, was a Force-sensitive human female Jedi who fought on the side of the Resistance during the war.</p>
-    Additional info source: <a href="https://starwars.fandom.com/wiki/Rey_Skywalker">https://starwars.fandom.com/wiki/Rey_Skywalker</a>
-  </div>
-  <div style="flex: 1; text-align: right;">
-    <img src="http://www.hdwallpapers.in/walls/star_wars_the_force_awakens_rey-wide.jpg" alt="#8 Rey" style="max-height: 275px; max-width: 100%; min-height: 175px;"/><br><br>Source: <a href="http://www.hdwallpapers.in/walls/star_wars_the_force_awakens_rey-wide.jpg" style="word-break: break-all;">http://www.hdwallpapers.in/walls/star_wars_the_force_awakens_rey-wide.jpg</a>
-  </div>
-</div>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>#8 Rey</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        background: url(http://www.hdwallpapers.in/walls/star_wars_the_force_awakens_rey-wide.jpg) no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        color: #FFFFFF;
+      }
+      .content {
+        position: relative;
+        padding: 20px;
+        min-height: 100vh;
+        text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      a {
+        color: #ADD8E6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>#8 Rey</h1>
+      <div>
+        <strong>Short Introduction:</strong>
+        <p>Rey Skywalker, known only as Rey throughout the First Order-Resistance War, was a Force-sensitive human female Jedi who fought on the side of the Resistance during the war.</p>
+        Additional info source: <a href="https://starwars.fandom.com/wiki/Rey_Skywalker">https://starwars.fandom.com/wiki/Rey_Skywalker</a>
+      </div>
+      <p><em>Background Image Source: <a href="http://www.hdwallpapers.in/walls/star_wars_the_force_awakens_rey-wide.jpg" target="_blank">http://www.hdwallpapers.in/walls/star_wars_the_force_awakens_rey-wide.jpg</a></em></p>
+    </div>
+  </body>
+</html>
