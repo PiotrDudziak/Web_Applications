@@ -1,0 +1,22 @@
+/* Ping for me was too fast so I decided to add one own style to slow it down */
+
+.animate-slow-ping {
+  display: inline-block;
+  transform-origin: center;
+  animation: slowPingTextAnimation 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes slowPingTextAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
