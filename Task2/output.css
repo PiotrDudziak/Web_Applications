@@ -12,6 +12,7 @@
     --color-green-500: oklch(0.723 0.219 149.579);
     --color-green-900: oklch(0.393 0.095 152.535);
     --color-blue-500: oklch(0.623 0.214 259.815);
+    --color-blue-900: oklch(0.379 0.146 265.522);
     --color-indigo-500: oklch(0.585 0.233 277.117);
     --color-purple-500: oklch(0.627 0.265 303.9);
     --color-gray-600: oklch(0.446 0.03 256.802);
@@ -22,6 +23,10 @@
     --spacing: 0.25rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
+    --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
@@ -360,6 +365,9 @@
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
   .mb-1 {
     margin-bottom: calc(var(--spacing) * 1);
   }
@@ -474,14 +482,170 @@
   .min-h-screen {
     min-height: 100vh;
   }
+  .w-1 {
+    width: calc(var(--spacing) * 1);
+  }
   .w-1\/2 {
     width: calc(1/2 * 100%);
   }
   .w-1\/3 {
     width: calc(1/3 * 100%);
   }
+  .w-2 {
+    width: calc(var(--spacing) * 2);
+  }
   .w-2\/3 {
     width: calc(2/3 * 100%);
+  }
+  .w-3 {
+    width: calc(var(--spacing) * 3);
+  }
+  .w-3\/4 {
+    width: calc(3/4 * 100%);
+  }
+  .w-3\/5 {
+    width: calc(3/5 * 100%);
+  }
+  .w-4 {
+    width: calc(var(--spacing) * 4);
+  }
+  .w-4\/5 {
+    width: calc(4/5 * 100%);
+  }
+  .w-5 {
+    width: calc(var(--spacing) * 5);
+  }
+  .w-5\/6 {
+    width: calc(5/6 * 100%);
+  }
+  .w-7\/12 {
+    width: calc(7/12 * 100%);
+  }
+  .w-8\/11 {
+    width: calc(8/11 * 100%);
+  }
+  .w-8\/12 {
+    width: calc(8/12 * 100%);
+  }
+  .w-9\/12 {
+    width: calc(9/12 * 100%);
+  }
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
+  .w-10\/12 {
+    width: calc(10/12 * 100%);
+  }
+  .w-11 {
+    width: calc(var(--spacing) * 11);
+  }
+  .w-11\/12 {
+    width: calc(11/12 * 100%);
+  }
+  .w-11\/13 {
+    width: calc(11/13 * 100%);
+  }
+  .w-11\/24 {
+    width: calc(11/24 * 100%);
+  }
+  .w-15\/24 {
+    width: calc(15/24 * 100%);
+  }
+  .w-16\/24 {
+    width: calc(16/24 * 100%);
+  }
+  .w-19\/24 {
+    width: calc(19/24 * 100%);
+  }
+  .w-21 {
+    width: calc(var(--spacing) * 21);
+  }
+  .w-21\/24 {
+    width: calc(21/24 * 100%);
+  }
+  .w-22\/24 {
+    width: calc(22/24 * 100%);
+  }
+  .w-23\/24 {
+    width: calc(23/24 * 100%);
+  }
+  .w-52 {
+    width: calc(var(--spacing) * 52);
+  }
+  .w-52\/100 {
+    width: calc(52/100 * 100%);
+  }
+  .w-53 {
+    width: calc(var(--spacing) * 53);
+  }
+  .w-53\/100 {
+    width: calc(53/100 * 100%);
+  }
+  .w-54 {
+    width: calc(var(--spacing) * 54);
+  }
+  .w-54\/100 {
+    width: calc(54/100 * 100%);
+  }
+  .w-84 {
+    width: calc(var(--spacing) * 84);
+  }
+  .w-84\/100 {
+    width: calc(84/100 * 100%);
+  }
+  .w-85\/100 {
+    width: calc(85/100 * 100%);
+  }
+  .w-86 {
+    width: calc(var(--spacing) * 86);
+  }
+  .w-86\/100 {
+    width: calc(86/100 * 100%);
+  }
+  .w-88 {
+    width: calc(var(--spacing) * 88);
+  }
+  .w-88\/100 {
+    width: calc(88/100 * 100%);
+  }
+  .w-89\/100 {
+    width: calc(89/100 * 100%);
+  }
+  .w-90\/100 {
+    width: calc(90/100 * 100%);
+  }
+  .w-175\/200 {
+    width: calc(175/200 * 100%);
+  }
+  .w-800\/1000 {
+    width: calc(800/1000 * 100%);
+  }
+  .w-805\/1000 {
+    width: calc(805/1000 * 100%);
+  }
+  .w-810\/1000 {
+    width: calc(810/1000 * 100%);
+  }
+  .w-815\/1000 {
+    width: calc(815/1000 * 100%);
+  }
+  .w-820\/1000 {
+    width: calc(820/1000 * 100%);
+  }
+  .w-830\/1000 {
+    width: calc(830/1000 * 100%);
+  }
+  .w-840\/1000 {
+    width: calc(840/1000 * 100%);
+  }
+  .w-850\/1000 {
+    width: calc(850/1000 * 100%);
+  }
+  .w-860\/1000 {
+    width: calc(860/1000 * 100%);
+  }
+  .w-870\/1000 {
+    width: calc(870/1000 * 100%);
   }
   .w-\[calc\(33\.33\%-1rem\)\] {
     width: calc(33.33% - 1rem);
@@ -1107,6 +1271,9 @@
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
   }
+  .bg-blue-900 {
+    background-color: var(--color-blue-900);
+  }
   .bg-gray-700 {
     background-color: var(--color-gray-700);
   }
@@ -1365,6 +1532,14 @@
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
   }
   .text-sm {
     font-size: var(--text-sm);
