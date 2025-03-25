@@ -20,3 +20,9 @@
     opacity: 0;
   }
 }
+
+.character-image {
+  width: 350px; /* Set the desired width */
+  height: 450px; /* Set the desired height */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+}
