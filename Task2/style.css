@@ -1,4 +1,4 @@
-/* Ping for me was too fast so I decided to add one own style to slow it down */
+/* Ping for me was too fast so I decided to add own style to slow it down */
 
 .animate-slow-ping {
   display: inline-block;
@@ -22,7 +22,12 @@
 }
 
 .character-image {
-  width: 350px; /* Set the desired width */
-  height: 450px; /* Set the desired height */
-  object-fit: cover; /* Ensure the image covers the area without distortion */
+  width: 350px;
+  height: 450px;
+  object-fit: cover;
+}
+
+.planet-image {
+  width: 350px; ;
+  height: auto ;
 }
