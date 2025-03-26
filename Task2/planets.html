@@ -5,25 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Planets - Star Wars Theme</title>
     <link rel="stylesheet" href="output.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="bg-gray-900 text-white p-6">
     <header class="text-center mb-8">
-      <h1 class="text-4xl font-bold text-yellow-500">Planets</h1>
-      <nav class="flex justify-center gap-4">
-        <a href="starwars.html" class="text-purple-500 hover:underline">Home</a>
-        <a href="characters.html" class="text-purple-500 hover:underline">Characters</a>
-        <a href="planets.html" class="text-purple-500 hover:underline">Planets</a>
-        <a href="starships.html" class="text-purple-500 hover:underline">Starships</a>
+      <h1 class="text-4xl sm:text-5xl font-bold text-yellow-500">Planets</h1>
+      <nav class="flex flex-wrap justify-center gap-4 mb-8">
+        <a href="starwars.html" class="text-purple-500 hover:underline text-2xl px-8">Home</a>
+        <a href="characters.html" class="text-purple-500 hover:underline text-2xl px-8">Characters</a>
+        <a href="planets.html" class="text-purple-500 hover:underline text-2xl px-8">Planets</a>
+        <a href="starships.html" class="text-purple-500 hover:underline text-2xl px-8">Starships</a>
       </nav>
     </header>
 
-    <!-- Updated flex column demonstration -->
     <section>
-      <div class="flex flex-col gap-4">
-        <div class="p-4 bg-gray-800 rounded shadow-lg">Tatooine</div>
-        <div class="p-4 bg-gray-800 rounded shadow-lg">Alderaan</div>
-        <div class="p-4 bg-gray-800 rounded shadow-lg">Hoth</div>
-      </div>
+      <ul class="flex flex-col gap-4">
+        <!-- Card 1: Tatooine -->
+        <li class="flex flex-col sm:flex-row w-full p-4 bg-green-900 rounded shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center sm:text-left">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-yellow-500 mb-1">Tatooine</h3>
+            <p class="text-lg mb-2">A desert planet with twin suns, known for its harsh environment and as the home of Anakin and Luke Skywalker.</p>
+            <a class="text-purple-500 underline text-lg" href="https://static1.srcdn.com/wordpress/wp-content/uploads/2019/12/Tatooine-Lars-Homestead.jpg" target="_blank">Image Source</a>
+          </div>
+          <a href="https://static1.srcdn.com/wordpress/wp-content/uploads/2019/12/Tatooine-Lars-Homestead.jpg" target="_blank">
+            <img class="character-image rounded mb-2 mx-auto block sm:ml-4" src="https://static1.srcdn.com/wordpress/wp-content/uploads/2019/12/Tatooine-Lars-Homestead.jpg" alt="Tatooine" />
+          </a>
+        </li>
+
+        <!-- Card 2: Alderaan -->
+        <li class="flex flex-col sm:flex-row w-full p-4 bg-blue-900 rounded shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center sm:text-left">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-yellow-500 mb-1">Alderaan</h3>
+            <p class="text-lg mb-2">A peaceful planet known for its beauty and advanced culture, tragically destroyed by the Death Star.</p>
+            <a class="text-purple-500 underline text-lg" href="https://example.com/alderaan.jpg" target="_blank">Image Source</a>
+          </div>
+          <a href="https://example.com/alderaan.jpg" target="_blank">
+            <img class="character-image rounded mb-2 mx-auto block sm:ml-4" src="https://example.com/alderaan.jpg" alt="Alderaan" />
+          </a>
+        </li>
+
+        <!-- Card 3: Hoth -->
+        <li class="flex flex-col sm:flex-row w-full p-4 bg-gray-800 rounded shadow-xl hover:shadow-2xl transition-shadow duration-300 text-center sm:text-left">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-yellow-500 mb-1">Hoth</h3>
+            <p class="text-lg mb-2">An icy planet that served as the location for the Rebel Alliance's Echo Base.</p>
+            <a class="text-purple-500 underline text-lg" href="https://example.com/hoth.jpg" target="_blank">Image Source</a>
+          </div>
+          <a href="https://example.com/hoth.jpg" target="_blank">
+            <img class="character-image rounded mb-2 mx-auto block sm:ml-4" src="https://example.com/hoth.jpg" alt="Hoth" />
+          </a>
+        </li>
+      </ul>
     </section>
   </body>
 </html>
