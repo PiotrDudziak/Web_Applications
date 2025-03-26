@@ -45,7 +45,8 @@
     "vite": "^6.2.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "postcss input.css -o output.css"
   },
   "keywords": [],
   "author": "",
