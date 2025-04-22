@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stwórz Trasę</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .login-register-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+        }
+        .login-register-container a {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .user-links-container {
+            position: absolute;
+            top: 0;
+            left: 150px;
+            padding: 10px;
+        }
+        .user-links-container a {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .logout-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .logout-container form {
+            margin-left: 10px;
+        }
+        .content {
+            padding: 20px;
+            display: flex;
+            align-items: flex-start; /* Align items to the start */
+            justify-content: flex-start; /* Align items to the start */
+        }
+        .form-container {
+            flex: 1;
+            max-width: 40%;
+        }
+        hr {
+            border: 1px solid #ddd;
+        }
+        #bg-preview {
+            margin-top: 20px;
+            margin-left: 20px;
+            flex: 1;
+            text-align: center;
+            display: none; /* Hidden by default */
+            max-height: 80vh; /* Limit height to viewport height */
+            overflow: hidden; /* Hide overflow */
+        }
+        #bg-preview-img {
+            max-width: 100%; /* Use full width of container */
+            max-height: 100%; /* Use full height of container */
+            border: 1px solid #ccc;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain; /* Fit image inside container */
+        }
+        #bg-preview-label {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Styles for larger form elements */
+        label {
+            font-size: 1.2em; /* Larger labels */
+        }
+
+        input[type="text"],
+        select,
+        button {
+            font-size: 1.1em; /* Larger text and select */
+            padding: 8px 12px; /* More padding */
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 10px 15px;
+            display: block; /* Make buttons block-level elements */
+            margin-bottom: 5px; /* Add some space between buttons */
+            width: fit-content; /* Adjust width to content */
+        }
+
+        .description-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .description-box p {
+            font-size: 1.3em; /* Larger font size for description */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="login-register-container">
+          <a href="{% url 'route_list' %}" style="color: white;">Powrót do Listy Tras</a>
+        </div>
+        <h1>Edytor tras</h1>
+        {% if user.is_authenticated %}
+        {% endif %}
+            <p>Witaj, {{ user.username }}!</p>
+            <div class="logout-container">
+                Zalogowany jako {{ user.username }} |
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Wyloguj</button>
+                </form>
+            </div>
+    </div>
+    <div class="content">
+        <div class="form-container">
+            <div class="description-box">
+                <p>Chcesz stworzyć nową trasę? Wypełnij ten elegancki formularz! Nadaj jej nazwę z fantazją i wybierz tło, które natchnie Cię podczas tworzenia. Kliknij 'Pogląd tła', aby upewnić się, że Twoje tło jest równie inspirujące, jak Twoje pomysły!</p>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="button" id="preview-btn">Pogląd tła</button>
+                <button type="submit">Stwórz trasę z takim tłem</button>
+            </form>
+        </div>
+        <div id="bg-preview">
+            <label id="bg-preview-label">Wybrane tło</label>
+            <img id="bg-preview-img" src="" alt="Podgląd tła">
+        </div>
+    </div>
+    <script>
+        // Mapping background id -> image url, passed from the view context
+        const bgUrls = {{ background_image_urls|safe }};
+        document.getElementById('preview-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Find the select element for background (Django default name: "background")
+            const bgSelect = document.querySelector('select[name="background"]');
+            if (!bgSelect) return;
+            const selectedId = bgSelect.value;
+            const imgUrl = bgUrls[selectedId];
+            if (imgUrl) {
+                document.getElementById('bg-preview-img').src = imgUrl;
+                document.getElementById('bg-preview').style.display = 'block';
+            } else {
+                document.getElementById('bg-preview').style.display = 'none';
+            }
+        });
+        // Optional: auto-preview when select changes
+        document.querySelector('select[name="background"]')?.addEventListener('change', function(){
+            document.getElementById('bg-preview').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

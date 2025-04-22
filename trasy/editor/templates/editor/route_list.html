@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edytor Tras</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .login-register-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+        }
+        .login-register-container a {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .user-links-container {
+            position: absolute;
+            top: 0;
+            left: 150px;
+            padding: 10px;
+        }
+        .user-links-container a {
+            color: white;
+            text-decoration: none;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .logout-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .logout-container form {
+            margin-left: 10px;
+        }
+        .content {
+            padding: 20px;
+        }
+        hr {
+            border: 1px solid #ddd;
+        }
+        .app-description {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="login-register-container">
+            <a href="{% url 'route_create' %}" style="color: white;">Stwórz nową trasę</a>
+        </div>
+        <h1>Edytor Tras</h1>
+        {% if user.is_authenticated %}
+        {% endif %}
+            <p>Witaj, {{ user.username }}!</p>
+            <div class="logout-container">
+                Zalogowany jako {{ user.username }} |
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Wyloguj</button>
+                </form>
+            </div>
+    </div>
+    <div class="content">
+        <div class="app-description">
+            <h2>O Edytorze Tras</h2>
+            <p>
+                Witaj w Edytorze Tras! Ta aplikacja umożliwia tworzenie spersonalizowanych tras na wybranych przez Ciebie tłach.
+                Trasa składa się z punktów, które możesz dowolnie dodawać, edytować i przesuwać, aby idealnie odwzorować Twoją wizję.
+                Każdy punkt trasy jest precyzyjnie reprezentowany przez współrzędne X i Y, co zapewnia pełną kontrolę nad jej kształtem.
+                Zapisane trasy możesz przeglądać i edytować w dowolnym momencie, co pozwala na ciągłe udoskonalanie Twoich projektów.
+                Puść wodze fantazji i stwórz unikalne trasy, które ożywią Twoje pomysły!
+            </p>
+        </div>
+        <h2>Twoje trasy:</h2>
+        <p>Lista Twoich utworzonych tras. Kliknij na trasę, aby zobaczyć szczegóły i edytować.</p>
+        <ul>
+            {% for trasa in trasy %}
+                <li><a href="{% url 'route_detail' trasa.id %}">{{ trasa.name }}</a></li>
+            {% empty %}
+                <li>Brak tras.</li>
+            {% endfor %}
+        </ul>
+
+        <div class="pagination">
+            {% if trasy.has_previous %}
+                <a href="?page=1">&laquo; Pierwsza</a>
+                <a href="?page={{ trasy.previous_page_number }}">Poprzednia</a>
+            {% endif %}
+
+            <span>
+                Strona {{ trasy.number }} z {{ trasy.paginator.num_pages }}
+            </span>
+
+            {% if trasy.has_next %}
+                <a href="?page={{ trasy.next_page_number }}">Następna</a>
+                <a href="?page={{ trasy.paginator.num_pages }}">Ostatnia &raquo;</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

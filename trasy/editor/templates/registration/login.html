@@ -1,0 +1,13 @@
+{% extends "editor/base.html" %}
+
+{% block content %}
+    {% if not user.is_authenticated %}
+        <h2>Logowanie</h2>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Zaloguj</button>
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    {% endif %}
+{% endblock %}
