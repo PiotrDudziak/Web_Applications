@@ -30,9 +30,9 @@ Projekt to aplikacja Django umożliwiająca tworzenie i edycję tras, w której 
     python manage.py migrate
 5. Utwórz początkowy plik migracji dla aplikacji editor:
     python manage.py makemigrations editor
-   Zastosuje migracje do bazy danych:
+6. Zastosuje migracje do bazy danych:
     python manage.py migrate editor
-6. Uruchom serwer developerski:
+7. Uruchom serwer developerski:
     python manage.py runserver
 
 ## Uruchamianie testów
