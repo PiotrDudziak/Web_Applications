@@ -52,11 +52,16 @@
         .logout-container form {
             margin-left: 10px;
         }
+        /* Ustawienia dla przycisku wylogowywania, aby był mniejszy */
+        .logout-container button {
+            font-size: 1.1em;
+            padding: 8px 12px;
+        }
         .content {
             padding: 20px;
             display: flex;
-            align-items: flex-start; /* Align items to the start */
-            justify-content: flex-start; /* Align items to the start */
+            align-items: flex-start;
+            justify-content: flex-start;
         }
         .form-container {
             flex: 1;
@@ -70,53 +75,48 @@
             margin-left: 20px;
             flex: 1;
             text-align: center;
-            display: none; /* Hidden by default */
-            max-height: 80vh; /* Limit height to viewport height */
-            overflow: hidden; /* Hide overflow */
+            display: none;
+            max-height: 80vh;
+            overflow: hidden;
         }
         #bg-preview-img {
-            max-width: 100%; /* Use full width of container */
-            max-height: 100%; /* Use full height of container */
+            max-width: 100%;
+            max-height: 100%;
             border: 1px solid #ccc;
             display: block;
             margin: 0 auto;
-            object-fit: contain; /* Fit image inside container */
+            object-fit: contain;
         }
         #bg-preview-label {
             font-size: 1.2em;
             margin-bottom: 5px;
             display: block;
         }
-
-        /* Styles for larger form elements */
         label {
-            font-size: 1.2em; /* Larger labels */
+            font-size: 1.2em;
         }
-
         input[type="text"],
         select,
         button {
-            font-size: 1.1em; /* Larger text and select */
-            padding: 8px 12px; /* More padding */
+            font-size: 1.1em;
+            padding: 8px 12px;
         }
-
+        /* Reguła dla głównych przycisków formularza */
         button {
             font-size: 1.2em;
             padding: 10px 15px;
-            display: block; /* Make buttons block-level elements */
-            margin-bottom: 5px; /* Add some space between buttons */
-            width: fit-content; /* Adjust width to content */
+            display: block;
+            margin-bottom: 5px;
+            width: fit-content;
         }
-
         .description-box {
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 10px;
             background-color: #f9f9f9;
         }
-
         .description-box p {
-            font-size: 1.3em; /* Larger font size for description */
+            font-size: 1.3em;
         }
     </style>
 </head>
@@ -140,7 +140,7 @@
     <div class="content">
         <div class="form-container">
             <div class="description-box">
-                <p>Chcesz stworzyć nową trasę? Wypełnij ten elegancki formularz! Nadaj jej nazwę z fantazją i wybierz tło, które natchnie Cię podczas tworzenia. Kliknij 'Pogląd tła', aby upewnić się, że Twoje tło jest równie inspirujące, jak Twoje pomysły!</p>
+                <p>Chcesz stworzyć nową trasę? Wypełnij ten elegancki formularz! Nadaj jej nazwę z fantazją i wybierz tło, które natchnie Cię podczas tworzenia. Kliknij &#39;Pogląd tła&#39;, aby upewnić się, że Twoje tło jest równie inspirujące, jak Twoje pomysły!</p>
             </div>
             <form method="post">
                 {% csrf_token %}
@@ -155,12 +155,11 @@
         </div>
     </div>
     <script>
-        // Mapping background id -> image url, passed from the view context
         const bgUrls = {{ background_image_urls|safe }};
+        const bgSelect = document.querySelector('select[name="background"]');
+
         document.getElementById('preview-btn').addEventListener('click', function(e) {
             e.preventDefault();
-            // Find the select element for background (Django default name: "background")
-            const bgSelect = document.querySelector('select[name="background"]');
             if (!bgSelect) return;
             const selectedId = bgSelect.value;
             const imgUrl = bgUrls[selectedId];
@@ -171,8 +170,8 @@
                 document.getElementById('bg-preview').style.display = 'none';
             }
         });
-        // Optional: auto-preview when select changes
-        document.querySelector('select[name="background"]')?.addEventListener('change', function(){
+
+        bgSelect?.addEventListener('change', function(){
             document.getElementById('bg-preview').style.display = 'none';
         });
     </script>
