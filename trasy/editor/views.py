@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth import authenticate, login as auth_login
-from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login as auth_login
 from .models import BackgroundImage, Route, RoutePoint
 from .forms import RouteForm, RoutePointForm
 from django.http import JsonResponse, HttpResponse
@@ -9,14 +8,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.forms import UserCreationForm
 import json
 from django.core.paginator import Paginator
-from django.core.serializers import serialize
 from io import BytesIO
 from PIL import Image, ImageDraw
 from django.contrib.admin.views.decorators import staff_member_required
-from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from rest_framework import viewsets
 from .serializers import RouteSerializer
 from .serializers import RoutePointSerializer
 from rest_framework import viewsets, permissions, status
@@ -58,42 +54,28 @@ def route_list(request):
     return render(request, 'editor/route_list.html', {'background_images': background_images, 'trasy': trasy})
 
 @login_required
-def route_create(request, background_id=None):
-    background = None
-    if background_id:
-        background = get_object_or_404(BackgroundImage, id=background_id)
-
+def route_create(request):
     if request.method == 'POST':
         form = RouteForm(request.POST)
         if form.is_valid():
             route = form.save(commit=False)
             route.user = request.user
-            if background:
-                route.background = background
-            else:
-                route.background = BackgroundImage.objects.first()
+            # Pole background jest ustawiane z formularza
             route.save()
             return redirect('route_detail', route_id=route.id)
     else:
         form = RouteForm()
-        if background:
-            form.initial['background'] = background
 
-    # ---- Add this block ----
     background_images = BackgroundImage.objects.all()
     background_image_urls = {str(bg.id): bg.image.url for bg in background_images}
-    # ---- End block ----
-
     return render(
         request,
         'editor/route_form.html',
         {
             'form': form,
-            'background': background,
-            'background_image_urls': background_image_urls,  # pass to template
+            'background_image_urls': background_image_urls,
         }
     )
-
 
 @login_required
 def route_detail(request, route_id):
