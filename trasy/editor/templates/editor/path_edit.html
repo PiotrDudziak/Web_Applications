@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Edytuj Ścieżkę</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0; padding: 0;
+    }
+    .header {
+    position: relative;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .login-register-container {
+    position: absolute;
+    top: 0; left: 0; padding: 10px;
+  }
+  .login-register-container a { color: white; text-decoration: none; }
+  .logout-container {
+    position: absolute;
+    top: 0; right: 0;
+    padding: 10px;
+    display: flex; align-items: center;
+  }
+  .logout-container form { margin-left: 10px; }
+  .welcome {
+    margin-top: 8px;
+    font-size: 16px;
+  }
+    .route-details-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .route-details-header h1 {
+      font-size: 24px; margin: 0;
+    }
+    .button-container {
+      display: flex;
+      align-items: center;
+    }
+    .button-container label {
+      margin-right: 8px;
+    }
+    .button-container input,
+    .button-container button,
+    .button-container form button {
+      margin-left: 10px;
+      padding: 8px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .content {
+      padding: 0 20px 20px;
+    }
+    #canvasAndSegments {
+      display: flex;
+      align-items: flex-start;
+    }
+    .canvas-container {
+      flex: 1;
+      max-width: 800px;
+      margin-right: 20px;
+    }
+    #routeCanvas {
+      width: 100%; height: auto;
+      border: 1px solid #ccc; cursor: crosshair;
+      background: #fff;
+    }
+    #segmentList {
+      width: 300px;
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      max-height: 700px;
+      overflow-y: auto;
+    }
+    #segmentList h3 {
+      margin-top: 0; font-size: 18px;
+    }
+    .segment-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px;
+      border-bottom: 1px solid #eee;
+    }
+    .move-buttons button {
+      margin-left: 5px;
+      padding: 4px 8px;
+    }
+    .pagination {
+      text-align: center; margin-top: 10px;
+    }
+    .pagination button {
+      margin: 0 5px; padding: 6px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+  <div class="login-register-container">
+    <a href="{% url 'route_list' %}" style="font-size:20px">Powrót do listy tras</a>
+  </div>
+  <h1>Edytor Tras</h1>
+  <p class="welcome">Witaj, {{ user.username }}!</p>
+  <div class="logout-container">
+    Zalogowany jako {{ user.username }}
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit">Wyloguj</button>
+    </form>
+  </div>
+</div>
+
+  <div class="route-details-header">
+    <h1>Edytuj Ścieżkę - {{ path.name }}</h1>
+    <div class="button-container">
+      <label for="lineColorPicker">Kolor linii:</label>
+      <input type="color" id="lineColorPicker" value="{{ path.line_color|default:'#ff0000' }}"/>
+      <button id="save-btn">Zapisz</button>
+      <form method="post" action="{% url 'path_delete' board_id=board.id path_id=path.id %}">
+        {% csrf_token %}
+        <button type="submit">Usuń ścieżkę</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="content">
+    <div id="canvasAndSegments">
+      <div class="canvas-container">
+        <canvas id="routeCanvas"
+                data-cols="{{ board.cols }}"
+                data-rows="{{ board.rows }}"></canvas>
+      </div>
+      <div id="segmentList">
+        <h3>Segmenty</h3>
+        <div id="segmentItems"></div>
+        <div class="pagination">
+          <button id="prevSegBtn" onclick="prevSegmentPage()">←</button>
+          <button id="nextSegBtn" onclick="nextSegmentPage()">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const canvas = document.getElementById('routeCanvas');
+  const ctx = canvas.getContext('2d');
+  const linePicker = document.getElementById('lineColorPicker');
+  const segmentItems = document.getElementById('segmentItems');
+  const prevSegBtn = document.getElementById('prevSegBtn');
+  const nextSegBtn = document.getElementById('nextSegBtn');
+
+  const cols = +canvas.dataset.cols, rows = +canvas.dataset.rows, cellSize = 40;
+  let points = {{ initial|safe }}, savedDots = {{ board.dots|safe }};
+  let lineColor = linePicker.value, drawing = false, draggingIndex = -1;
+  let scaleX = 1, scaleY = 1, page = 0, perPage = 10;
+  const boardId = {{ board.id }}, pathId = {{ path.id }}, token = '{{ csrf_token }}';
+
+  canvas.width = cols * cellSize;
+  canvas.height = rows * cellSize;
+
+  function computeScale() {
+    const r = canvas.getBoundingClientRect();
+    scaleX = canvas.width / r.width; scaleY = canvas.height / r.height;
+  }
+
+  function syncSegments() {
+    fetch(`/boards/${boardId}/paths/${pathId}/save/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': token
+      },
+      body: JSON.stringify({ points, line_color: lineColor })
+    });
+  }
+
+  function drawRoute() {
+    ctx.fillStyle = 'black'; ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.strokeStyle = '#444'; ctx.lineWidth = 1;
+    for(let c=0;c<=cols;c++){ ctx.beginPath();ctx.moveTo(c*cellSize,0);ctx.lineTo(c*cellSize,rows*cellSize);ctx.stroke(); }
+    for(let r=0;r<=rows;r++){ ctx.beginPath();ctx.moveTo(0,r*cellSize);ctx.lineTo(cols*cellSize,r*cellSize);ctx.stroke(); }
+    savedDots.forEach(d => {
+      const x = d.col*cellSize + cellSize/2;
+      const y = d.row*cellSize + cellSize/2;
+      ctx.beginPath(); ctx.arc(x,y,6,0,2*Math.PI); ctx.fillStyle = d.color||'#fff'; ctx.fill();
+    });
+    if(points.length){
+      ctx.beginPath(); ctx.strokeStyle = lineColor; ctx.lineWidth = 2;
+      points.forEach((p,i) => {
+        const x = p.col*cellSize + cellSize/2;
+        const y = p.row*cellSize + cellSize/2;
+        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      });
+      ctx.stroke();
+    }
+    updateSegmentList();
+  }
+
+  function addPoint(x,y) {
+    const newPoint = { row: Math.floor(y/cellSize), col: Math.floor(x/cellSize) };
+    const last = points[points.length - 1];
+    if (last && last.row === newPoint.row && last.col === newPoint.col) return;
+    points.push(newPoint);
+    drawRoute();
+    syncSegments();
+  }
+
+  function updateSegmentList() {
+    const start = page * perPage;
+    segmentItems.innerHTML = '';
+    points.slice(start, start + perPage).forEach((p,i) => {
+      const idx = start + i;
+      const el = document.createElement('div');
+      el.className = 'segment-item';
+      el.innerHTML = `
+        <span>(${p.row},${p.col})</span>
+        <div class="move-buttons">
+          <button onclick="moveSegment(${idx},-1)">↑</button>
+          <button onclick="moveSegment(${idx},1)">↓</button>
+        </div>
+        <button onclick="deleteSegment(${idx})">✖</button>
+      `;
+      segmentItems.appendChild(el);
+    });
+    prevSegBtn.disabled = page === 0;
+    nextSegBtn.disabled = start + perPage >= points.length;
+  }
+
+  function prevSegmentPage() { page--; updateSegmentList(); }
+  function nextSegmentPage() { page++; updateSegmentList(); }
+
+  function deleteSegment(i) {
+    fetch(`/boards/${boardId}/paths/${pathId}/delete_point/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json','X-CSRFToken': token },
+      body: JSON.stringify({ index: i })
+    })
+    .then(r => r.json())
+    .then(d => {
+      points = d.points;
+      drawRoute();
+    });
+  }
+
+  function moveSegment(i,dir) {
+    const order = points.map((_,j) => j);
+    const t = i + dir;
+    if (t < 0 || t >= points.length) return;
+    [order[i], order[t]] = [order[t], order[i]];
+    fetch(`/boards/${boardId}/paths/${pathId}/reorder_points/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json','X-CSRFToken': token },
+      body: JSON.stringify({ order })
+    })
+    .then(r => r.json())
+    .then(d => {
+      points = d.points;
+      drawRoute();
+    });
+  }
+
+  linePicker.addEventListener('input', () => {
+    lineColor = linePicker.value;
+    drawRoute();
+    syncSegments();
+  });
+
+  canvas.addEventListener('mousedown', e => {
+    const rect = canvas.getBoundingClientRect();
+    const cx = (e.clientX - rect.left) * scaleX;
+    const cy = (e.clientY - rect.top) * scaleY;
+    const hit = points.findIndex(p =>
+      Math.hypot(p.col*cellSize+cellSize/2-cx, p.row*cellSize+cellSize/2-cy) < 10
+    );
+    if (hit >= 0) draggingIndex = hit;
+    else { drawing = true; addPoint(cx, cy); }
+  });
+
+  canvas.addEventListener('mousemove', e => {
+    if (!drawing && draggingIndex < 0) return;
+    const rect = canvas.getBoundingClientRect();
+    const cx = (e.clientX - rect.left) * scaleX;
+    const cy = (e.clientY - rect.top) * scaleY;
+    if (draggingIndex >= 0) {
+      points[draggingIndex].col = Math.floor(cx/cellSize);
+      points[draggingIndex].row = Math.floor(cy/cellSize);
+    } else {
+      const last = points[points.length - 1];
+      if (Math.hypot(cx-(last.col*cellSize+cellSize/2), cy-(last.row*cellSize+cellSize/2)) > 10) {
+        addPoint(cx, cy);
+      }
+    }
+    drawRoute();
+  });
+
+  canvas.addEventListener('mouseup', () => {
+    drawing = false; draggingIndex = -1;
+    syncSegments();
+  });
+
+  document.getElementById('save-btn').addEventListener('click', () => {
+    fetch(`/boards/${boardId}/paths/${pathId}/save/`, {
+      method: 'POST',
+      headers:{ 'Content-Type': 'application/json','X-CSRFToken': token },
+      body: JSON.stringify({ points, line_color: lineColor })
+    })
+    .then(r => r.json())
+    .then(d => {
+      window.location.href = `/boards/${boardId}/paths/${d.path_id}/edit/`;
+    });
+  });
+
+  window.prevSegmentPage = prevSegmentPage;
+  window.nextSegmentPage = nextSegmentPage;
+  window.deleteSegment = deleteSegment;
+  window.moveSegment = moveSegment;
+
+  computeScale();
+  drawRoute();
+  window.addEventListener('resize', () => { computeScale(); drawRoute(); });
+});
+</script>
+</body>
+</html>

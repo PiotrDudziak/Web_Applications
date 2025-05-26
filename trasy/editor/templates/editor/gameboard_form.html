@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <title>{% if object %}Edytor planszy{% else %}Nowa plansza{% endif %}</title>
+  <style>
+    body { font-family: Arial,sans-serif; background:#f0f0f0; margin:0; padding:0; }
+    .header { background:#333; color:#fff; padding:20px; text-align:center; position:relative; }
+    .header a { position:absolute; top:20px; left:20px; color:#fff; text-decoration:none; }
+    .logout-container { position:absolute; top:20px; right:20px; }
+    .content { display:flex; gap:20px; padding:20px; justify-content:center; }
+    .panel { flex:1; max-width:400px; border:1px solid #ddd; padding:15px; border-radius:4px; background:#fafafa; }
+    .panel h2 { margin-top:0; font-size:1.2em; }
+    label, input, select, button { font-size:1em; margin-bottom:10px; display:block; width:100%; }
+    input, select { padding:8px; box-sizing:border-box; }
+    button { padding:8px 12px; cursor:pointer; }
+    small { color:red; }
+    #board-preview { display:none; margin-top:20px; }
+    #board-preview label { font-weight:bold; display:block; margin-bottom:5px; }
+    #grid-preview { display:grid; grid-gap:2px; background:#fff; border:1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="{% url 'route_list' %}">Powrót do listy tras</a>
+    <h1>{% if object %}Edytor planszy{% else %}Nowa plansza{% endif %}</h1>
+    {% if user.is_authenticated %}
+      <p>Witaj, {{ user.username }}!</p>
+      <div class="logout-container">
+        <form method="post" action="{% url 'logout' %}">{% csrf_token %}
+          <button type="submit">Wyloguj</button>
+        </form>
+      </div>
+    {% endif %}
+  </div>
+  <div class="content">
+    <div class="panel">
+      <h2>Nowa plansza</h2>
+      <form method="post"
+            action="{% if object %}{% url 'gameboard_detail' object.id %}{% else %}{% url 'gameboard_create' %}{% endif %}">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="create">
+        <label for="id_name_create">Nazwa</label>
+        <input type="text" id="id_name_create" name="name" required>
+        {% if errors.name %}<small>{{ errors.name }}</small>{% endif %}
+        <label for="id_rows">Wiersze</label>
+        <input type="number" id="id_rows" name="rows" min="1" required>
+        {% if errors.dimensions %}<small>{{ errors.dimensions }}</small>{% endif %}
+        <label for="id_cols">Kolumny</label>
+        <input type="number" id="id_cols" name="cols" min="1" required>
+        <button type="submit">Utwórz</button>
+      </form>
+  </div>
+</body>
+</html>

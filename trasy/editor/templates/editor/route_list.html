@@ -84,13 +84,17 @@
         .pagination a:hover:not(.active) {
             background-color: #ddd;
         }
+        .columns { display: flex; }
+        .column { width: 50%; padding: 0 20px; box-sizing: border-box; }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="login-register-container">
-            <a href="{% url 'route_create' %}" style="color: white;">Stwórz nową trasę</a>
-        </div>
+  <a href="{% url 'route_create' %}" style="color: white;">Stwórz nową trasę</a> |
+  <a href="{% url 'gameboard_create' %}" style="color: white;">Stwórz nową planszę</a> |
+  <a href="{% url 'path_form' %}" style="color: white;">Stwórz nową ścieżkę</a>
+</div>
         <h1>Edytor Tras</h1>
         {% if user.is_authenticated %}
         {% endif %}
@@ -114,30 +118,71 @@
                 Puść wodze fantazji i stwórz unikalne trasy, które ożywią Twoje pomysły!
             </p>
         </div>
-        <h2>Twoje trasy:</h2>
-        <p>Lista Twoich utworzonych tras. Kliknij na trasę, aby zobaczyć szczegóły i edytować.</p>
-        <ul>
-            {% for trasa in trasy %}
-                <li><a href="{% url 'route_detail' trasa.id %}">{{ trasa.name }}</a></li>
-            {% empty %}
-                <li>Brak tras.</li>
-            {% endfor %}
-        </ul>
+        <div class="columns">
+  <div class="column">
+    <h2>Twoje trasy:</h2>
+    <ul>
+      {% for trasa in trasy %}
+        <li><a href="{% url 'route_detail' trasa.id %}">{{ trasa.name }}</a></li>
+      {% empty %}
+        <li>Brak tras.</li>
+      {% endfor %}
+    </ul>
+    {% if trasy.has_other_pages %}
+      <nav class="pagination">
+        {% if trasy.has_previous %}<a href="?route_page={{ trasy.previous_page_number }}">&laquo;</a>{% endif %}
+        {% for i in trasy.paginator.page_range %}
+          {% if i == trasy.number %}<a class="active">{{ i }}</a>{% else %}<a href="?route_page={{ i }}">{{ i }}</a>{% endif %}
+        {% endfor %}
+        {% if trasy.has_next %}<a href="?route_page={{ trasy.next_page_number }}">&raquo;</a>{% endif %}
+      </nav>
+    {% endif %}
+  </div>
 
-        <div class="pagination">
-            {% if trasy.has_previous %}
-                <a href="?page=1">&laquo; Pierwsza</a>
-                <a href="?page={{ trasy.previous_page_number }}">Poprzednia</a>
-            {% endif %}
+  <div class="column">
+    <h2>Twoje plansze:</h2>
+    <ul>
+      {% for board in plansze %}
+        <li><a href="{% url 'gameboard_detail' board.id %}">{{ board.name }}</a></li>
+      {% empty %}
+        <li>Brak plansz.</li>
+      {% endfor %}
+    </ul>
+    {% if plansze.has_other_pages %}
+      <nav class="pagination">
+        {% if plansze.has_previous %}<a href="?board_page={{ plansze.previous_page_number }}">&laquo;</a>{% endif %}
+        {% for i in plansze.paginator.page_range %}
+          {% if i == plansze.number %}<a class="active">{{ i }}</a>{% else %}<a href="?board_page={{ i }}">{{ i }}</a>{% endif %}
+        {% endfor %}
+        {% if plansze.has_next %}<a href="?board_page={{ plansze.next_page_number }}">&raquo;</a>{% endif %}
+      </nav>
+    {% endif %}
+  </div>
 
-            <span>
-                Strona {{ trasy.number }} z {{ trasy.paginator.num_pages }}
-            </span>
+  <div class="column">
+    <h2>Twoje ścieżki:</h2>
+    <ul>
+      {% for path in sciezki %}
+        <li>
+          <a href="{% url 'path_edit' path.board.id path.id %}">{{ path.name }}</a>
+          &nbsp;
+        </li>
+      {% empty %}
+        <li>Brak ścieżek.</li>
+      {% endfor %}
+    </ul>
+    {% if sciezki.has_other_pages %}
+      <nav class="pagination">
+        {% if sciezki.has_previous %}<a href="?path_page={{ sciezki.previous_page_number }}">&laquo;</a>{% endif %}
+        {% for i in sciezki.paginator.page_range %}
+          {% if i == sciezki.number %}<a class="active">{{ i }}</a>{% else %}<a href="?path_page={{ i }}">{{ i }}</a>{% endif %}
+        {% endfor %}
+        {% if sciezki.has_next %}<a href="?path_page={{ sciezki.next_page_number }}">&raquo;</a>{% endif %}
+      </nav>
+    {% endif %}
+  </div>
+</div>
 
-            {% if trasy.has_next %}
-                <a href="?page={{ trasy.next_page_number }}">Następna</a>
-                <a href="?page={{ trasy.paginator.num_pages }}">Ostatnia &raquo;</a>
-            {% endif %}
         </div>
     </div>
 </body>

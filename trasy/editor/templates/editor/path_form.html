@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stwórz Ścieżkę</title>
+    {% load static %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .login-register-container, .user-links-container, .logout-container {
+            position: absolute;
+            top: 0;
+            padding: 10px;
+        }
+        .login-register-container { left: 0; }
+        .user-links-container { left: 150px; }
+        .logout-container { right: 0; display: flex; align-items: center; }
+        .logout-container button {
+            font-size: 1.1em;
+            padding: 8px 12px;
+        }
+        .content {
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .form-container {
+            flex: 1;
+            max-width: 40%;
+        }
+        .preview-container {
+            flex: 1;
+            margin-left: 20px;
+            max-width: 50%;
+        }
+        input[type="text"], select {
+            font-size: 1.1em;
+            padding: 8px 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            font-size: 1.2em;
+            padding: 10px 15px;
+            display: block;
+            margin-bottom: 5px;
+            width: fit-content;
+        }
+        .description-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+        .description-box p {
+            font-size: 1.3em;
+        }
+        #board-preview {
+      display: none;
+      margin-top: 10px;
+      background-color: black;
+      overflow: hidden;
+
+    }
+        #board-preview .grid-cell {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="login-register-container">
+            <a href="{% url 'route_list' %}" style="color: white;">Powrót do listy tras</a>
+        </div>
+        <h1>Nowa Ścieżka</h1>
+        <p>Witaj, {{ user.username }}!</p>
+        <div class="logout-container">
+            Zalogowany jako {{ user.username }} |
+            <form method="post" action="{% url 'logout' %}">{% csrf_token %}
+                <button type="submit">Wyloguj</button>
+            </form>
+        </div>
+    </div>
+    <div class="content">
+        <div class="form-container">
+            <div class="description-box">
+                <p>Wybierz planszę i nadaj nazwę nowej ścieżce, a następnie przejdź do jej edycji.</p>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="button" id="preview-board-btn">Pogląd planszy</button>
+                <button type="submit">Stwórz ścieżkę</button>
+            </form>
+        </div>
+        <div class="preview-container">
+            <div id="board-preview"></div>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const boardSelect = document.getElementById('id_board');
+      const previewDiv = document.getElementById('board-preview');
+
+      function loadPreview() {
+        const boardId = boardSelect.value;
+        if (!boardId) {
+          previewDiv.innerHTML = '';
+          previewDiv.style.display = 'none';
+          return;
+        }
+        fetch(`/gameboard_preview/${boardId}/`)
+          .then(resp => {
+            if (!resp.ok) throw new Error('Plansza nie znaleziona');
+            return resp.json();
+          })
+          .then(data => renderPreview(data))
+          .catch(err => console.error(err));
+      }
+
+      function renderPreview(data) {
+        previewDiv.innerHTML = '';
+        previewDiv.style.display = 'grid';
+        previewDiv.style.backgroundColor = 'black';
+        previewDiv.style.gridTemplateColumns = `repeat(${data.cols}, 40px)`;
+        previewDiv.style.width = `calc(${data.cols} * 40px)`;
+        previewDiv.style.height = `calc(${data.rows} * 40px)`;
+        previewDiv.style.gridAutoRows = '40px';
+
+        for (let i = 0; i < data.rows; i++) {
+          for (let j = 0; j < data.cols; j++) {
+            const cell = document.createElement('div');
+            cell.style.border = '1px solid #ccc';
+            cell.style.position = 'relative';
+            const dot = data.dots.find(d => d.row === i && d.col === j);
+            if (dot) {
+              const dotEl = document.createElement('div');
+              dotEl.style.position = 'absolute';
+              dotEl.style.top = '50%';
+              dotEl.style.left = '50%';
+              dotEl.style.width = '20px';
+              dotEl.style.height = '20px';
+              dotEl.style.backgroundColor = dot.color;
+              dotEl.style.borderRadius = '50%';
+              dotEl.style.transform = 'translate(-50%, -50%)';
+              cell.appendChild(dotEl);
+            }
+            previewDiv.appendChild(cell);
+          }
+        }
+      }
+
+      boardSelect.addEventListener('change', loadPreview);
+      loadPreview();
+    });
+  </script>
+</body>
+</html>
