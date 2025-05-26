@@ -1,8 +1,6 @@
 from django.contrib import admin
-from .models import BackgroundImage, Route, RoutePoint
+from .models import BackgroundImage, Route, RoutePoint, GameBoard, Path
 from django.utils.html import format_html
-from django.shortcuts import reverse
-from django.utils.safestring import mark_safe
 
 @admin.register(BackgroundImage)
 class BackgroundImageAdmin(admin.ModelAdmin):
@@ -20,3 +18,19 @@ class RouteAdmin(admin.ModelAdmin):
 class RoutePointAdmin(admin.ModelAdmin):
     list_display = ('id', 'route', 'order', 'x', 'y')
 
+class PathInline(admin.TabularInline):
+    model = Path
+    extra = 0
+    readonly_fields = ('path_data', 'created_at')
+    fields = ('name', 'path_data', 'created_at')
+    show_change_link = True
+
+@admin.register(GameBoard)
+class GameBoardAdmin(admin.ModelAdmin):
+    list_display = ('name', 'user', 'rows', 'cols')
+    inlines = [PathInline]
+
+@admin.register(Path)
+class PathAdmin(admin.ModelAdmin):
+    list_display = ('name', 'user', 'board', 'created_at')
+    readonly_fields = ('created_at',)

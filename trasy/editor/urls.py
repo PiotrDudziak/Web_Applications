@@ -3,6 +3,7 @@ from . import views
 from django.contrib.auth import views as auth_views
 from rest_framework.routers import DefaultRouter
 from .views import RouteViewSet, RoutePointViewSet
+from . import views
 
 router = DefaultRouter()
 router.register(r'trasy', RouteViewSet, basename='trasa')
@@ -27,4 +28,22 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('route/<int:route_id>/delete/', views.route_delete, name='route_delete'),
     path('api/trasy/<int:route_id>/punkty/<int:pk>/', RoutePointViewSet.as_view({'delete': 'destroy'})),
+path('gameboards/', views.gameboard_list, name='gameboard_list'),
+    path('gameboards/create/', views.create_or_edit_board, name='gameboard_create'),
+    path('gameboards/<int:board_id>/edit/', views.create_or_edit_board, name='gameboard_detail'),
+    path('gameboards/<int:board_id>/delete/', views.delete_board, name='gameboard_delete'),
+    path('gameboards/create/', views.save_board, name='gameboard_create'),
+    path('gameboards/<int:pk>/save/', views.save_board, name='save_board'),
+    path('gameboards/<int:pk>/save_dots_ajax/', views.save_dots_ajax, name='gameboard_save_dots_ajax'),
+path('boards/<int:board_id>/paths/new/', views.path_edit, name='path_new'),
+  path('boards/<int:board_id>/paths/<int:path_id>/edit/', views.path_edit, name='path_edit'),
+  path('boards/<int:board_id>/paths/save/', views.path_save, name='path_save_new'),
+  path('boards/<int:board_id>/paths/<int:path_id>/save/', views.path_save, name='path_save'),
+path('ścieżki/nowa/', views.path_form, name='path_form'),
+path('gameboard_preview/<int:board_id>/', views.gameboard_preview, name='gameboard_preview'),
+path('boards/<int:board_id>/paths/<int:path_id>/edit/', views.path_edit, name='path_edit'),
+    path('boards/<int:board_id>/paths/<int:path_id>/save/', views.path_save, name='path_save'),
+path('boards/<int:board_id>/paths/<int:path_id>/delete_point/', views.path_delete_point, name='path_delete_point'),
+    path('boards/<int:board_id>/paths/<int:path_id>/reorder_points/', views.path_reorder_points, name='path_reorder_points'),
+    path('boards/<int:board_id>/paths/<int:path_id>/delete/', views.path_delete, name='path_delete'),
 ]
