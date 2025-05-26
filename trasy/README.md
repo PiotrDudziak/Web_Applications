@@ -23,7 +23,9 @@ Projekt to aplikacja Django umożliwiająca tworzenie i edycję tras, w której 
    git sparse-checkout set trasy
    git checkout main
 2. Utwórz i aktywuj wirtualne środowisko:
-    python3 -m venv venv source venv/bin/activate
+    python3 -m venv venv 
+    
+    source venv/bin/activate
 3. Zainstaluj zależności:
    pip install -r requirements.txt
 4. Wykonaj migracje:
