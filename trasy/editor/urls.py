@@ -46,4 +46,6 @@ path('boards/<int:board_id>/paths/<int:path_id>/edit/', views.path_edit, name='p
 path('boards/<int:board_id>/paths/<int:path_id>/delete_point/', views.path_delete_point, name='path_delete_point'),
     path('boards/<int:board_id>/paths/<int:path_id>/reorder_points/', views.path_reorder_points, name='path_reorder_points'),
     path('boards/<int:board_id>/paths/<int:path_id>/delete/', views.path_delete, name='path_delete'),
+path('sse/', include('notifications.urls')),
+
 ]

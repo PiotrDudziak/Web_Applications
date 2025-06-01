@@ -17,7 +17,6 @@ from django.views.decorators.http import require_POST
 from .serializers import RouteSerializer
 from .serializers import RoutePointSerializer
 from rest_framework import viewsets, permissions, status
-
 from .models import BackgroundImage, Route, RoutePoint, GameBoard, Path
 from .forms import RouteForm, RoutePointForm, GameBoardForm, PathForm
 
@@ -531,3 +530,4 @@ def path_delete(request, board_id, path_id):
         path.delete()
         return redirect('route_list')
     return JsonResponse({'error': 'Invalid request method'}, status=405)
+
