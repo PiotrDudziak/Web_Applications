@@ -3,10 +3,11 @@ from django.http import StreamingHttpResponse
 from .sse import register, event_stream
 
 def notifications_stream(request):
-    q = register()
+    from notifications.sse import register, event_stream
     response = StreamingHttpResponse(
-        event_stream(q),
+        event_stream(register()),
         content_type='text/event-stream'
     )
     response['Cache-Control'] = 'no-cache'
+    response['X-Accel-Buffering'] = 'no'
     return response
