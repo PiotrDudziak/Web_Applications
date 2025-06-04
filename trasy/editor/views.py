@@ -531,3 +531,19 @@ def path_delete(request, board_id, path_id):
         path.delete()
         return redirect('route_list')
     return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+
+@login_required
+def board_view(request, board_id):
+    # Dostępne dla wszystkich zalogowanych użytkowników
+    board = get_object_or_404(GameBoard, id=board_id)
+    paths = Path.objects.filter(board=board)
+
+    return render(request, 'editor/board_view.html', {
+        'board': board,
+        'paths': paths,
+        'is_owner': board.user == request.user
+    })
+def path_data(request, board_id, path_id):
+    path = get_object_or_404(Path, id=path_id, board_id=board_id)
+    return JsonResponse({'path_data': path.path_data})

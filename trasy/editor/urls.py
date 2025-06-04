@@ -2,6 +2,7 @@ from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
 from rest_framework.routers import DefaultRouter
+from django.views.generic import RedirectView
 from .views import RouteViewSet, RoutePointViewSet
 from . import views
 
@@ -47,5 +48,8 @@ path('boards/<int:board_id>/paths/<int:path_id>/delete_point/', views.path_delet
     path('boards/<int:board_id>/paths/<int:path_id>/reorder_points/', views.path_reorder_points, name='path_reorder_points'),
     path('boards/<int:board_id>/paths/<int:path_id>/delete/', views.path_delete, name='path_delete'),
 path('sse/', include('notifications.urls')),
+path('board_view/<int:board_id>/', views.board_view, name='board_view'),
+path('boards/<int:board_id>/paths/<int:path_id>/data/', views.path_data, name='path_data'),
+path('board/<int:board_id>/', RedirectView.as_view(pattern_name='board_view'), name='board_redirect'),
 
 ]
