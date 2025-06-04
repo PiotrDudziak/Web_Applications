@@ -1,0 +1,102 @@
+{% extends 'editor/base.html' %}
+
+{% block content %}
+<div class="content">
+  <div class="panel">
+    <h2>Podgląd planszy: {{ board.name }}</h2>
+    <p>Utworzona przez: {{ board.user.username }}</p>
+
+    <div id="board-container" style="margin-top: 20px; position: relative;">
+      <div id="board-display" style="position: relative; border: 1px solid #ccc;"></div>
+    </div>
+
+    {% if is_owner %}
+    <div style="margin-top: 20px;">
+      <button onclick="location.href='{% url 'path_new' board.id %}'">Dodaj nową ścieżkę</button>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const boardDisplay = document.getElementById('board-display');
+  const boardId = {{ board.id }};
+
+  // Pobierz dane planszy
+  fetch(`/gameboard_preview/${boardId}/`)
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        boardDisplay.innerHTML = `<div style="color: red; padding: 10px;">${data.error}</div>`;
+        return;
+      }
+
+      renderBoard(data);
+    })
+    .catch(error => {
+      console.error('Błąd:', error);
+      boardDisplay.innerHTML = `<div style="color: red; padding: 10px;">Błąd ładowania planszy</div>`;
+    });
+
+  function renderBoard(boardData) {
+    const cellSize = 40;
+    const gridGap = 2; // szerokość białego paska między komórkami
+    const rows = boardData.rows;
+    const cols = boardData.cols;
+
+    // Wyczyść container
+    boardDisplay.innerHTML = '';
+
+    // Ustaw style dla głównego kontenera planszy
+    boardDisplay.style.width = `${cols * (cellSize + gridGap) - gridGap}px`;
+    boardDisplay.style.height = `${rows * (cellSize + gridGap) - gridGap}px`;
+    boardDisplay.style.position = 'relative';
+    boardDisplay.style.backgroundColor = 'white'; // kolor pasków (odstępów)
+    boardDisplay.style.display = 'grid';
+    boardDisplay.style.gridTemplateColumns = `repeat(${cols}, ${cellSize}px)`;
+    boardDisplay.style.gridTemplateRows = `repeat(${rows}, ${cellSize}px)`;
+    boardDisplay.style.gridGap = `${gridGap}px`;
+
+    // Tworzenie czarnych komórek siatki
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const cell = document.createElement('div');
+        cell.style.backgroundColor = 'black';
+        cell.style.width = '100%';
+        cell.style.height = '100%';
+        boardDisplay.appendChild(cell);
+      }
+    }
+
+    // Dodaj warstwę dla kropek bezpośrednio na boardDisplay
+    const overlayElement = document.createElement('div');
+    overlayElement.style.position = 'absolute';
+    overlayElement.style.top = '0';
+    overlayElement.style.left = '0';
+    overlayElement.style.width = '100%';
+    overlayElement.style.height = '100%';
+    overlayElement.style.pointerEvents = 'none';
+    overlayElement.id = 'board-overlay';
+
+    // Dodaj nakładkę do kontenera planszy
+    boardDisplay.parentNode.appendChild(overlayElement);
+
+    // Rysuj kropki
+    boardData.dots.forEach(dot => {
+      const dotElem = document.createElement('div');
+      dotElem.style.width = '10px';
+      dotElem.style.height = '10px';
+      dotElem.style.borderRadius = '50%';
+      dotElem.style.backgroundColor = dot.color;
+      dotElem.style.position = 'absolute';
+      dotElem.style.left = `${dot.col * (cellSize + gridGap) + (cellSize/2) - 5}px`;
+      dotElem.style.top = `${dot.row * (cellSize + gridGap) + (cellSize/2) - 5}px`;
+      dotElem.style.zIndex = '10';
+
+      overlayElement.appendChild(dotElem);
+    });
+  }
+});
+</script>
+{% endblock %}
